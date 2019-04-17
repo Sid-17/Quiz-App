@@ -15,6 +15,10 @@ import { AuthService } from './core/auth.service';
 import { UserService } from './core/user.service';
 import { ReactiveFormsModule } from '@angular/forms';
 
+import { QuizComponent } from './quiz/quiz.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { AddQuizComponent } from './add-quiz/add-quiz.component';
+
 import { AppComponent } from './app.component';
 import { AdminComponent } from './admin/admin.component';
 
@@ -24,7 +28,10 @@ import { AdminComponent } from './admin/admin.component';
     LoginComponent,
     UserComponent,
     RegisterComponent,
-    AdminComponent
+    AdminComponent,
+    QuizComponent,
+    NavbarComponent,
+    AddQuizComponent
   ],
   imports: [
     BrowserModule,
