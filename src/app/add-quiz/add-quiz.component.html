@@ -1,0 +1,103 @@
+<p>
+  add-quiz works!
+</p>
+<div class="container">
+  <div class="col-md-2">
+    <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#add_quiz">Add New Quiz</button>
+
+  </div>
+  <div class="col-md-2">
+      <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#add_qus">Add Question to Existing Quiz</button>
+
+  </div>
+  <div id="add_quiz" class="collapse" style="margin-top: 70px">
+      <div class="panel panel-primary">
+        <div class="panel-footer">
+      <div class="form-group">
+          <label for="title">Quiz Title:</label>
+          <input type="text" class="form-control" id="title">
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary" style="margin: 10px" >Add</button>
+          </div>
+</div>
+</div>
+    </div>
+  <div id="add_qus" class="collapse" style="margin-top: 70px">
+    <p>add one dropdown or radio button for selecting the existing quiz</p>
+      <div class="panel panel-primary">
+        <div class="panel-footer">
+          <div class="form-group">
+            <label for="comment">Enter Your Question:</label>
+            <textarea class="form-control" rows="5" ></textarea>
+          </div>
+
+          <div class="form-group">
+              <div class="dropdown">
+                  <label for="opt_type">Select Option Type:</label>
+                  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
+                 </button>
+                  <ul class="dropdown-menu">
+                    <li><a href="#">HTML</a></li>
+                    <li><a href="#">CSS</a></li>
+                    <li><a href="#">JavaScript</a></li>
+                  </ul>
+                </div>
+              <!-- <label for="usr">Name:</label>
+              <input type="text" class="form-control" id="usr"> -->
+            </div>
+            <div class="form-group">
+                <!-- <div class="row"> -->
+
+                    <div class="funkyradio">
+                     <div class="funkyradio-primary">
+                         <input type="checkbox" name="checkbox" id="checkbox1" />
+                         <input type="text" class="form-control" id="op1">
+                     </div>
+                     <div class="funkyradio-primary">
+                         <input type="checkbox" name="checkbox" id="checkbox2" />
+                         <input type="text" class="form-control" id="op2">
+                     </div>
+                     <div class="funkyradio-primary">
+                         <input type="checkbox" name="checkbox" id="checkbox3" />
+                         <input type="text" class="form-control" id="op3">
+                     </div>
+                     <div class="funkyradio-primary">
+                         <input type="checkbox" name="checkbox" id="checkbox4"/>
+                         <input type="text" class="form-control" id="op4">
+                     </div>
+                 </div>
+                 <!-- </div> -->
+              </div>
+              <div class="form-group">
+                <!-- <div class="row"> -->
+
+                    <div class="funkyradio">
+                     <div class="funkyradio-primary">
+                         <input type="radio" name="checkbox" id="radio1" />
+                         <input type="text" class="form-control" id="op1">
+                     </div>
+                     <div class="funkyradio-primary">
+                         <input type="radio" name="checkbox" id="radio2" />
+                         <input type="text" class="form-control" id="op2">
+                     </div>
+                     <div class="funkyradio-primary">
+                         <input type="radio" name="checkbox" id="radio3" />
+                         <input type="text" class="form-control" id="op3">
+                     </div>
+                     <div class="funkyradio-primary">
+                         <input type="radio" name="checkbox" id="radio4"/>
+                         <input type="text" class="form-control" id="op4">
+                     </div>
+                 </div>
+                 <!-- </div> -->
+              </div>
+              <div class="form-group">
+                  <button type="submit" class="btn btn-primary" style="margin: 10px" >Add</button>
+                  <!-- <button type="button" class="btn btn-primary" style="margin: 10px" >Add again</button> -->
+                  <button type="button" class="btn btn-primary" style="margin: 10px" >close</button>
+
+                </div>
+      </div>
+    </div>
+</div>
