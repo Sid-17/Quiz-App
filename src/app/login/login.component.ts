@@ -34,10 +34,10 @@ export class LoginComponent {
       if(value.email == "qw@qw.com" && value.password == "qwqwqw"){
         console.log(value.email);
         console.log(value.password);
-        this.router.navigate(['/admin']);
+        this.router.navigate(['/add-quiz']);
       }
       else{
-        this.router.navigate(['/user']);
+        this.router.navigate(['/quiz']);
       }
     }, err => {
       console.log(err);
