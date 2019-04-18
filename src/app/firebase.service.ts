@@ -21,6 +21,17 @@ addQuiz(value){
     'name':value,
     'subject':value
   });
-  
+
+}
+addQuestion(question,op1,op2,op3,op4,ans){
+  this.firestore.collection('/Quizzes/'+'quiz2'+'/Questions').add({
+    'question': question,
+    'opt1':op1,
+    'opt2':op2,
+    'opt3':op3,
+    'opt4':op4,
+    'answer':ans
+  });
+
 }
 }
