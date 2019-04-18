@@ -1,27 +1,32 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../core/user.service';
 import { AuthService } from '../core/auth.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute,Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FirebaseUserModel } from '../core/user.model';
+import { FirebaseService } from '../firebase.service';
 
 @Component({
   selector: 'page-user',
   templateUrl: 'user.component.html',
-  styleUrls: ['user.scss']
+  styleUrls: ['user.scss'],
+  providers:[FirebaseService]
 })
 export class UserComponent implements OnInit{
 
   user: FirebaseUserModel = new FirebaseUserModel();
   profileForm: FormGroup;
+  items: Array<any>;
 
   constructor(
     public userService: UserService,
     public authService: AuthService,
     private route: ActivatedRoute,
     private location : Location,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    public firebaseService: FirebaseService,
+    private router: Router
   ) {
 
   }
@@ -34,6 +39,13 @@ export class UserComponent implements OnInit{
         this.createForm(this.user.name);
       }
     })
+
+    this.firebaseService.getQuizzes()
+    .subscribe(result => {
+      this.items = result;
+      console.log(this.items.length)
+    })
+
   }
 
   createForm(name) {
