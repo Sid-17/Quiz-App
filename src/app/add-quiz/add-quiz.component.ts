@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FirebaseService } from '../firebase.service';
+import { AuthService } from '../core/auth.service';
+import { Location } from '@angular/common';
+import { Router, Params } from '@angular/router';
 
 @Component({
   selector: 'app-add-quiz',
@@ -12,7 +15,11 @@ export class AddQuizComponent implements OnInit {
 
   drop1:string='Select Quiz';
   items: Array<any>;
-  constructor(public firebaseService: FirebaseService
+  constructor(
+    public firebaseService: FirebaseService,
+    public authService: AuthService,
+    private location : Location,
+    private router: Router
   ) { }
 
 
@@ -30,10 +37,19 @@ export class AddQuizComponent implements OnInit {
     this.firebaseService.addQuiz(value);
   }
 
-addQuestionInQuiz(question,op1,op2,op3,op4){
-  this.firebaseService.addQuestion(question,op1,op2,op3,op4,this.generateAns(op1,op2,op3,op4));
-
-}
+  logout(){
+    this.authService.doLogout()
+    .then((res) => {
+      // this.location.back();
+      this.router.navigate(['/login']);
+    }, (error) => {
+      console.log("Logout error", error);
+    });
+  }
+  
+  addQuestionInQuiz(question,op1,op2,op3,op4){
+    this.firebaseService.addQuestion(question,op1,op2,op3,op4,this.generateAns(op1,op2,op3,op4));
+  }
 
 generateAns(op1,op2,op3,op4){
   let id:string ="checkbox";

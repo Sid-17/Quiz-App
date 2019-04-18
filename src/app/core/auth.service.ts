@@ -1,13 +1,15 @@
 import { Injectable } from "@angular/core";
 import 'rxjs/add/operator/toPromise';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { Router, Params } from '@angular/router';
 import * as firebase from 'firebase/app';
 
 @Injectable()
 export class AuthService {
 
   constructor(
-   public afAuth: AngularFireAuth
+   public afAuth: AngularFireAuth,
+   private router: Router,
  ){}
 
   doRegister(value){
@@ -32,6 +34,7 @@ export class AuthService {
     return new Promise((resolve, reject) => {
       if(firebase.auth().currentUser){
         this.afAuth.auth.signOut()
+        this.router.navigate(['/login']);
         resolve();
       }
       else{

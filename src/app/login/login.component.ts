@@ -37,7 +37,7 @@ export class LoginComponent {
         this.router.navigate(['/add-quiz']);
       }
       else{
-        this.router.navigate(['/quiz']);
+        this.router.navigate(['/user']);
       }
     }, err => {
       console.log(err);

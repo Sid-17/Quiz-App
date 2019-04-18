@@ -21,9 +21,9 @@ export class AppRoutingModule { }
 export const rootRouterConfig: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent, canActivate: [AuthGuard] },
-  { path: 'admin', component: AdminComponent, resolve: { data: UserResolver}},
+  { path: 'admin', component: AdminComponent},
   { path: 'register', component: RegisterComponent, canActivate: [AuthGuard] },
-  { path: 'user', component: UserComponent,  resolve: { data: UserResolver}},
-  { path: 'quiz', component: QuizComponent,  resolve: { data: UserResolver}},
-  { path: 'add-quiz', component: AddQuizComponent,  resolve: { data: UserResolver}}
+  { path: 'user', component: UserComponent},
+  { path: 'quiz', component: QuizComponent},
+  { path: 'add-quiz', component: AddQuizComponent}
 ];
