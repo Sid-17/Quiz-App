@@ -1,12 +1,52 @@
-<nav class="navbar navbar-default navbar-static-top navbar-inverse">
-  <div class="container">
-    <a (click)="logout()" class="navbar-text navbar-right navbar-link">Logout</a>
+  <nav class="navbar navbar-default navbar-static-top navbar-inverse">
+    <div class="container">
+      <a (click)="logout()" class="navbar-text navbar-right navbar-link">Logout</a>
+    </div>
+  </nav>
+  <div class="center">
+  <div class="container col-md-6 col-md-offset-3">
+    <h4>Quiz Lists</h4>
+  <table class="table table-striped table-responsive-md btn-table">
+    <thead>
+      <tr>
+        <th>No</th>
+        <th>Quiz Names</th>
+        <!-- <th>Last Name</th>
+        <th>Username</th> -->
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let item of items">
+        <th scope="row">{{items.indexOf(item)+1}}</th>
+        <td #qname>{{item.payload.doc.id}}</td>
+        <td>
+          <button type="submit" class="btn btn-primary m-0" (click)="startQuiz(qname.innerText)">Start Quiz</button>
+        </td>
+      </tr>
+      </tbody>
+  </table>
   </div>
-</nav>
-<h1 class="header">Logged User Page</h1>
-<hr>
-<div>
-  <ul>
-    <li *ngFor="let item of items">{{item.payload.doc.id}}</li>
-</ul>
   </div>
+  <!-- <h1 class="header">Logged User Page</h1>
+  <div class="row">
+    <div class="col-md-4 col-md-offset-4">
+      <div class="card" style="width: 20rem;">
+        <img class="card-img-top image" [src]="user.image" *ngIf="user.image" alt="User image">
+        <img class="card-img-top image" src="https://via.placeholder.com/400x300" *ngIf="!user.image" alt="User image">
+        <div *ngIf='user.provider != "password"'class="card-body">
+          <h4 class="card-title">{{user.name}}</h4>
+          <p class="card-text">This is an example of Social Authentication using Firebase in an Angular 7 web app. </p>
+        </div>
+        <div *ngIf='user.provider == "password"'class="card-body">
+          <form [formGroup]="profileForm">
+            <div class="form-group">
+              <label>Your name</label>
+              <input type="text" formControlName="name" class="form-control" required>
+            </div>
+          </form>
+          <a (click)="save(profileForm.value)" class="btn btn-primary">Save</a>
+        </div>
+      </div>
+    </div>
+  </div> -->

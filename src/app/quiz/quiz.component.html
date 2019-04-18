@@ -1,29 +1,19 @@
-<p>
-  quiz not works!
-</p>
 <div class="container">
+    <h4>{{cquiz}} </h4>
+</div>
+<div class="container" id="{{items.indexOf(item)+1}}" *ngFor="let item of items">
 	<div class="row">
 	    <br/>
-        <div class="panel panel-primary">
+        <div class="panel panel-primary" >
              <div class="panel-heading">
-                  <!-- <pre> --><h4>Question 1</h4>>
-<h4>Which among the following statements regarding the Surrogacy (Regulation)
-bill, 2016 is incorrect ?
-a. It allows only Indian citizens for Surrogacy
-in India
-b. The bill allows both gestational and
-traditional Surrogacy
-c. Any woman in the age range of 25 to
-35 years of age is allowed to undertake
-surrogacy
-d. Surrogacy boards will decide code of
-conduct for Surrogacy in India</h4>
+                  <!-- <pre> --><h4>{{items.indexOf(item)+1}}. {{item.payload.doc.data().question}}</h4>
+
                   <!-- </pre> -->
              </div><!--.panel-heading-->
 
-<div class = "panel-footer">
+<!-- <div class = "panel-footer">
       <h4>Your Answer</h4>
-</div>
+</div> -->
 <!-- <ul class = "list-group">
     <li class = "list-group-item">
           <div class="checkbox">
@@ -58,52 +48,54 @@ conduct for Surrogacy in India</h4>
         </div>
     </li>
    </ul> -->
-   <div class="panel-footer" style="padding-left: 50px">
-      <h4>More than one ans are correct</h4>
+   <div class="panel-footer" style="padding-left: 50px" *ngIf="(item.payload.doc.data().multiCorrect)">
+      <!-- <h4>More than one ans are correct</h4> -->
+
+
+   <div class="funkyradio" id="{{items.indexOf(item)+1}}">
+    <div class="funkyradio-primary">
+        <input type="checkbox" name="checkbox_{{items.indexOf(item)+1}}" id="checkbox1{{items.indexOf(item)+1}}" />
+        <label for="checkbox1{{items.indexOf(item)+1}}">{{item.payload.doc.data().opt1}}</label>
+    </div>
+    <div class="funkyradio-primary">
+        <input type="checkbox" name="checkbox_{{items.indexOf(item)+1}}" id="checkbox2{{items.indexOf(item)+1}}" />
+        <label for="checkbox2{{items.indexOf(item)+1}}">{{item.payload.doc.data().opt2}}</label>
+    </div>
+    <div class="funkyradio-primary">
+        <input type="checkbox" name="checkbox_{{items.indexOf(item)+1}}" id="checkbox3{{items.indexOf(item)+1}}" />
+        <label for="checkbox3{{items.indexOf(item)+1}}">{{item.payload.doc.data().opt3}}</label>
+    </div>
+    <div class="funkyradio-primary">
+        <input type="checkbox" name="checkbox_{{items.indexOf(item)+1}}" id="checkbox4{{items.indexOf(item)+1}}" />
+        <label for="checkbox4{{items.indexOf(item)+1}}">{{item.payload.doc.data().opt4}}</label>
+    </div>
+</div>
+
+</div>
+    <div class="panel-footer" style="padding-left: 50px"
+    *ngIf="!(item.payload.doc.data().multiCorrect)">
+        <!-- <h4>Only one ans is correct</h4> -->
     <div class="row">
 
-   <div class="funkyradio">
-    <div class="funkyradio-primary">
-        <input type="checkbox" name="checkbox" id="checkbox1" checked/>
-        <label for="checkbox1">First Option default</label>
-    </div>
-    <div class="funkyradio-primary">
-        <input type="checkbox" name="checkbox" id="checkbox2" checked/>
-        <label for="checkbox2">Second Option primary</label>
-    </div>
-    <div class="funkyradio-primary">
-        <input type="checkbox" name="checkbox" id="checkbox3" checked/>
-        <label for="checkbox3">Third Option success</label>
-    </div>
-    <div class="funkyradio-primary">
-        <input type="checkbox" name="checkbox" id="checkbox4" checked/>
-        <label for="checkbox4">Fourth Option danger</label>
-    </div>
-</div>
-</div>
-</div>
-    <div class="panel-footer" style="padding-left: 50px">
-        <h4>Only one ans is correct</h4>
-    <div class="row">
-      <div class="funkyradio">
+      <div class="funkyradio" id="{{items.indexOf(item)+1}}">
         <div class="funkyradio-primary">
-            <input type="radio" name="radio" id="radio1" />
-            <label for="radio1">First Option default</label>
+            <input type="radio" name="radio_{{items.indexOf(item)+1}}" [id]="item.payload.doc.data().opt1" />
+            <label for="{{item.payload.doc.data().opt1}}">{{item.payload.doc.data().opt1}}</label>
       </div>
       <div class="funkyradio-primary">
-            <input type="radio" name="radio" id="radio2" checked/>
-            <label for="radio2">Second Option primary</label>
+            <input type="radio" name="radio_{{items.indexOf(item)+1}}" [id]="item.payload.doc.data().opt2" />
+            <label for="{{item.payload.doc.data().opt2}}">{{item.payload.doc.data().opt2}}</label>
       </div>
       <div class="funkyradio-primary">
-            <input type="radio" name="radio" id="radio3" />
-            <label for="radio3">Third Option success</label>
+            <input type="radio" name="radio_{{items.indexOf(item)+1}}" [id]="item.payload.doc.data().opt3" />
+            <label for="{{item.payload.doc.data().opt3}}">{{item.payload.doc.data().opt3}}</label>
       </div>
       <div class="funkyradio-primary">
-            <input type="radio" name="radio" id="radio4" />
-            <label for="radio4">Fourth Option danger</label>
+            <input type="radio" name="radio_{{items.indexOf(item)+1}}" [id]="item.payload.doc.data().opt4" />
+            <label for="{{item.payload.doc.data().opt4}}">{{item.payload.doc.data().opt4}}</label>
       </div>
-    </div>
 
+    </div>
     </div>
   </div>
         </div>

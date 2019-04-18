@@ -6,7 +6,7 @@ import { Location } from '@angular/common';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FirebaseUserModel } from '../core/user.model';
 import { FirebaseService } from '../firebase.service';
-
+import { ComponentService } from '../component.service';
 @Component({
   selector: 'page-user',
   templateUrl: 'user.component.html',
@@ -26,6 +26,7 @@ export class UserComponent implements OnInit{
     private location : Location,
     private fb: FormBuilder,
     public firebaseService: FirebaseService,
+    public componentService: ComponentService,
     private router: Router
   ) {
 
@@ -61,6 +62,10 @@ export class UserComponent implements OnInit{
     }, err => console.log(err))
   }
 
+startQuiz(value){
+  this.componentService.setId(value);
+  this.router.navigate(['/quiz']);
+}
   logout(){
     this.authService.doLogout()
     .then((res) => {

@@ -8,12 +8,16 @@ import {Quiz} from './quiz';
 })
 export class FirebaseService {
 
-  quizzes:Observable<Quiz[]>;
+  //quizzes:Observable<Quiz[]>;
 
   constructor(private firestore: AngularFirestore) {}
 
   getQuizzes(){
     return this.firestore.collection('/Quizzes').snapshotChanges();
+}
+
+getQuestions(quizId){
+  return this.firestore.collection('/Quizzes/'+quizId+'/Questions').snapshotChanges();
 }
 
 addQuiz(value){
@@ -34,4 +38,5 @@ addQuestion(question,op1,op2,op3,op4,ans){
   });
 
 }
+
 }
