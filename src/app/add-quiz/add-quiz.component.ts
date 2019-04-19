@@ -15,11 +15,6 @@ export class AddQuizComponent implements OnInit {
 
   selectedQuiz: string;
   items: Array<any>;
-  itemss = [
-    {key: 'item1'},
-    {key: 'item2'},
-    {key: 'item3'},
-  ];
 
   constructor(
     public firebaseService: FirebaseService,
@@ -37,32 +32,7 @@ export class AddQuizComponent implements OnInit {
       //console.log(this.items.length);
     })
 
-    // create checkbox group
-    let checkboxGroup = new FormArray(this.items.map(item => new FormGroup({
-      id: new FormControl(item.key),
-      text: new FormControl(item.text),
-      checkbox: new FormControl(false)
-    })));
-/*
-    // create a hidden reuired formControl to keep status of checkbox group
-    let hiddenControl = new FormControl(this.mapItems(checkboxGroup.value), Validators.required);
-    // update checkbox group's value to hidden formcontrol
-    checkboxGroup.valueChanges.subscribe((v) => {
-      console.log(v);
-      hiddenControl.setValue(this.mapItems(v));
-    });*/
-/*
-    this.form = new FormGroup({
-      items: checkboxGroup,
-      selectedItems: hiddenControl
-    });*/
-
   }
-
-  // mapItems(itemss) {
-  //   let selectedItems = itemss.filter((item) => item.checkbox).map((item) => item.id);
-  //   return selectedItems.length ? selectedItems : null;
-  // }
 
   addQuizInDb(value){
     console.log(value);
