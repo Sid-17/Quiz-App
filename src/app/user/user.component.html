@@ -5,7 +5,7 @@
   <div id="navbarNavDropdown" class="navbar-collapse collapse">
   <ul class="navbar-nav mr-auto col-md-11"></ul>
   <ul class="navbar-nav">
-    <button class="btn btn-success" (click)="logout()">Logout</button>
+    <button class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Logout" (click)="logout()">Logout</button>
     </ul>
   </div>
 </nav>
@@ -29,7 +29,7 @@
         <th scope="row">{{items.indexOf(item)+1}}</th>
         <td #qname>{{item.payload.doc.id}}</td>
         <td>
-          <button type="submit" class="btn btn-primary m-0" (click)="startQuiz(qname.innerText)">Start Quiz</button>
+          <button type="submit" class="btn btn-primary m-0" data-toggle="tooltip" data-placement="top" title="Start {{item.payload.doc.id}} Quiz" (click)="startQuiz(qname.innerText)">Start Quiz</button>
         </td>
       </tr>
       </tbody>
