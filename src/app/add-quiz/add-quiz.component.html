@@ -5,10 +5,10 @@
     <div id="navbarNavDropdown" class="navbar-collapse collapse">
         <ul class="navbar-nav mr-auto col-md-11">
             <li class="nav-item active ">
-                <button class="btn btn-success" (click)="disableDIV = true" data-target="#add_quiz">Add Quiz</button>
+                <button class="btn btn-success" (click)="disableDIV = false" data-target="#add_quiz">Add Quiz</button>
             </li>
             <li class="nav-item col-md-2">
-                <button class="btn btn-success" (click)="disableDIV = false" data-target="#add_qus">Add Question</button>
+                <button class="btn btn-success" (click)="disableDIV = true" data-target="#add_qus">Add Question</button>
             </li>
         </ul>
         <ul class="navbar-nav">
@@ -17,37 +17,32 @@
     </div>
 </nav>
 
-<div class="container" style="width:70%">
-  <div id="add_quiz" class="was-validated" [hidden]="!disableDIV" style="margin-top: 10px">
-      <div class="panel panel-primary">
-        <div class="panel-footer">
+<div class="container" style="width:70%; margin-top:10px">
+    <div id="add_quiz" style="width:300px" class="was-validated" [hidden]="disableDIV">
+      
 
-      <div class="form-group">
+        <div class="form-group">
           <label for="title">Quiz Title:</label>
           <input type="text" #quizTitle class="form-control" id="title" (change)="addQuizInDb($event)" required>
         </div>
         <div class="form-group">
             <button type="submit" class="btn btn-primary" (click)="addQuizInDb(quizTitle.value)" style="margin: 10px" >Add</button>
-          </div>
-</div>
-</div>
+        </div>
+        
     </div>
-    <div id="add_qus" class="was-validated"  [hidden]="disableDIV" style="margin-top: 10px">
-      
-      
-            <div class="panel panel-primary">
-              <div class="panel-footer">
-                  <div class="form-group container">
+    <div id="add_qus" class="was-validated"  [hidden]="!disableDIV">
+
+        <div class="form-group container">
       
                       <label for="select_title" class="col-md-2">Select Quiz:</label>
-                      <select class="form-control custom-select col-md-3" (change)="onQuizSelect($event)" id="sQuiz" required>
+                      <select class="form-control custom-select col-md-3" [(ngModel)]="n_sQuiz" (change)="onQuizSelect($event)" id="sQuiz" required>
                         <option value="">--Select--</option> 
                         <option *ngFor="let item of items" value="{{item.payload.doc.id}}">{{item.payload.doc.id}}</option>
                       </select>
                    </div>
                 <div class="form-group container">
                   <label for="comment" class="col-md-2">Enter Your Question:</label>
-                  <textarea #qArea class="form-control col-md-6" rows="5" placeholder="Enter the question" required></textarea>
+                  <textarea #qArea class="form-control col-md-6" rows="5" [(ngModel)]="n_qArea" placeholder="Enter the question" required></textarea>
                 </div>
                 <!-- <div class="container">
       
@@ -66,19 +61,19 @@
                           <div class="funkyradio">
                            <div class="funkyradio-primary col-md-3">
                                <input type="checkbox" name="checkbox" id="checkbox1">
-                               <input type="text" #op1 class="form-control" placeholder="option1" id="op1" required>
+                               <input type="text" #op1 class="form-control" [(ngModel)]="n_op1" placeholder="option1" id="op1" required>
                             </div>
                            <div class="funkyradio-primary col-md-3">
                                <input type="checkbox" name="checkbox" id="checkbox2"  >
-                               <input type="text" #op2 class="form-control" placeholder="option2" id="op2" required>
+                               <input type="text" #op2 class="form-control" [(ngModel)]="n_op2" placeholder="option2" id="op2" required>
                            </div>
                            <div class="funkyradio-primary col-md-3">
                                <input type="checkbox" name="checkbox" id="checkbox3" >
-                               <input type="text" #op3 class="form-control" placeholder="option3" id="op3" required>
+                               <input type="text" #op3 class="form-control" [(ngModel)]="n_op3" placeholder="option3" id="op3" required>
                            </div>
                            <div class="funkyradio-primary col-md-3">
                                <input type="checkbox" name="checkbox" id="checkbox4" >
-                               <input type="text" #op4 class="form-control" placeholder="option4" id="op4" required>
+                               <input type="text" #op4 class="form-control" [(ngModel)]="n_op4" placeholder="option4" id="op4" required>
                            </div>
                        </div>
                        </div>
@@ -108,21 +103,18 @@
                     </div> -->
                     <div class="form-group container">
                       <label for="anddesc" class="col-md-2">Marks:</label>
-                      <input type="number" min="1" #marks class="form-control col-md-6" placeholder="Enter the marks" id="marks" required>
+                      <input type="number" min="1" #marks class="form-control col-md-6" [(ngModel)]="n_marks" placeholder="Enter the marks" id="marks" required>
                     </div>
                     <div class="form-group container">
                       <label for="anddesc" class="col-md-2">Answer Explanation:</label>
-                      <textarea #eArea class="form-control col-md-6" rows="5" placeholder="Enter the answer description" required ></textarea>
+                      <textarea #eArea class="form-control col-md-6" rows="5" [(ngModel)]="n_eArea" placeholder="Enter the answer description" required ></textarea>
                     </div>
       
                     <div class="form-group container col-md-offset-2">
-                        <button type="submit" class="btn btn-primary" style="margin: 10px" (click)="addQuestionInQuiz(qArea.value,op1.value,op2.value,op3.value,op4.value,eArea.value,marks.value)">Add</button>
-                        <!-- <button type="button" class="btn btn-primary" style="margin: 10px" >Add again</button> -->
-                        <button type="button" class="btn btn-primary" style="margin: 10px" >Close</button>
-      
+                        <button type="submit" class="btn btn-primary" style="margin: 10px" (click)="addQuestionInQuiz(qArea.value,op1.value,op2.value,op3.value,op4.value,eArea.value,marks.value)" [disabled]="!n_op1 || !n_op2 || !n_op3 || !n_op4 || !n_sQuiz || !n_qArea || !n_marks || !n_eArea" >Add</button>
+                        <!--button type="button" class="btn btn-primary" style="margin: 10px" >Add again</button>
+                        <button type="button" class="btn btn-primary" style="margin: 10px" >Close</button-->
                       </div>
-            </div>
-          </div>
       </div>
   </div>
 

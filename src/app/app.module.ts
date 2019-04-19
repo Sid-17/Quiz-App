@@ -15,7 +15,7 @@ import { AuthService } from './core/auth.service';
 import { UserService } from './core/user.service';
 
 import { ReactiveFormsModule } from '@angular/forms';
-
+import { FormsModule } from '@angular/forms';
 import { QuizComponent } from './quiz/quiz.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { AddQuizComponent } from './add-quiz/add-quiz.component';
@@ -37,6 +37,7 @@ import { AdminComponent } from './admin/admin.component';
   imports: [
     BrowserModule,
     ReactiveFormsModule,
+    FormsModule,
     RouterModule.forRoot(rootRouterConfig, { useHash: false }),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features

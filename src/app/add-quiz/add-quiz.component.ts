@@ -27,7 +27,7 @@ export class AddQuizComponent implements OnInit {
     this.firebaseService.getQuizzes()
     .subscribe(result => {
       this.items = result;
-      console.log(this.items.length)
+      console.log(this.items.length);
     })
 
   }
