@@ -1,4 +1,4 @@
-<div class="container">
+<!--div class="container">
     <h4>{{cquiz}} </h4>
 </div>
 <div class="container" id="{{items.indexOf(item)+1}}" *ngFor="let item of items">
@@ -6,51 +6,10 @@
 	    <br/>
         <div class="panel panel-primary" >
              <div class="panel-heading">
-                  <!-- <pre> --><h4>{{items.indexOf(item)+1}}. {{item.payload.doc.data().question}}</h4>
+                <h4>{{items.indexOf(item)+1}}. {{item.payload.doc.data().question}}</h4>
+             </div>
 
-                  <!-- </pre> -->
-             </div><!--.panel-heading-->
-
-<!-- <div class = "panel-footer">
-      <h4>Your Answer</h4>
-</div> -->
-<!-- <ul class = "list-group">
-    <li class = "list-group-item">
-          <div class="checkbox">
-            <input type="checkbox" id="checkbox" />
-            <label for="checkbox">
-                1 and 2 only
-            </label>
-        </div>
-    </li>
-    <li class = "list-group-item">
-          <div class="checkbox">
-            <input type="checkbox" id="checkbox" />
-            <label for="checkbox">
-                2 and 3 only
-            </label>
-        </div>
-    </li>
-    <li class = "list-group-item">
-          <div class="checkbox">
-            <input type="checkbox" id="checkbox" />
-            <label for="checkbox">
-                1 and 3 only
-            </label>
-        </div>
-    </li>
-    <li class = "list-group-item">
-          <div class="checkbox">
-            <input type="checkbox" id="checkbox" />
-            <label for="checkbox">
-                1, 2 and 3
-            </label>
-        </div>
-    </li>
-   </ul> -->
    <div class="panel-footer" style="padding-left: 50px" *ngIf="(item.payload.doc.data().multiCorrect)">
-      <!-- <h4>More than one ans are correct</h4> -->
-
 
    <div class="funkyradio" id="{{items.indexOf(item)+1}}">
     <div class="funkyradio-primary">
@@ -74,7 +33,7 @@
 </div>
     <div class="panel-footer" style="padding-left: 50px"
     *ngIf="!(item.payload.doc.data().multiCorrect)">
-        <!-- <h4>Only one ans is correct</h4> -->
+        <h4>Only one ans is correct</h4>
     <div class="row">
 
       <div class="funkyradio" id="{{items.indexOf(item)+1}}">
@@ -100,8 +59,85 @@
   </div>
         </div>
 </div>
+</div-->
+
+
+
+
+
+
+
+
+
+
+<div class="container col-md-2 col-md-offset-5">
+    <h3>{{cquiz}} </h3>
+</div>
+<div class="container col-md-10 col-md-offset-1"  id="{{items.indexOf(item)+1}}" *ngFor="let item of items">
+	<!-- <div class="row"> -->
+	    <br/>
+        <div class="panel panel-primary" >
+             <div class="panel-heading">
+                  <h4>{{items.indexOf(item)+1}}. {{item.payload.doc.data().question}}</h4>
+             </div>
+
+          <div class="panel-footer" style="padding-left: 50px" *ngIf="(item.payload.doc.data().multiCorrect)">
+                 <h4>More than one ans are correct</h4>
+
+                <div class="funkyradio" id="{{items.indexOf(item)+1}}">
+                <div class="funkyradio-primary">
+                <input type="checkbox" name="checkbox_{{items.indexOf(item)+1}}" id="checkbox1{{items.indexOf(item)+1}}" />
+                <label for="checkbox1{{items.indexOf(item)+1}}">{{item.payload.doc.data().opt1}}</label>
+            </div>
+            <div class="funkyradio-primary">
+               <input type="checkbox" name="checkbox_{{items.indexOf(item)+1}}" id="checkbox2{{items.indexOf(item)+1}}" />
+               <label for="checkbox2{{items.indexOf(item)+1}}">{{item.payload.doc.data().opt2}}</label>
+            </div>
+            <div class="funkyradio-primary">
+                <input type="checkbox" name="checkbox_{{items.indexOf(item)+1}}" id="checkbox3{{items.indexOf(item)+1}}" />
+                <label for="checkbox3{{items.indexOf(item)+1}}">{{item.payload.doc.data().opt3}}</label>
+            </div>
+            <div class="funkyradio-primary">
+                <input type="checkbox" name="checkbox_{{items.indexOf(item)+1}}" id="checkbox4{{items.indexOf(item)+1}}" />
+                <label for="checkbox4{{items.indexOf(item)+1}}">{{item.payload.doc.data().opt4}}</label>
+            </div>
+        </div>
+
+  </div>
+    <div class="panel-footer" style="padding-left: 50px"
+    *ngIf="!(item.payload.doc.data().multiCorrect)">
+         <h4>Only one ans is correct</h4>
+    <div class="row">
+
+      <div class="funkyradio" id="{{items.indexOf(item)+1}}">
+        <div class="funkyradio-primary">
+            <input type="radio" name="radio_{{items.indexOf(item)+1}}" [id]="item.payload.doc.data().opt1" />
+            <label for="{{item.payload.doc.data().opt1}}">{{item.payload.doc.data().opt1}}</label>
+      </div>
+      <div class="funkyradio-primary">
+            <input type="radio" name="radio_{{items.indexOf(item)+1}}" [id]="item.payload.doc.data().opt2" />
+            <label for="{{item.payload.doc.data().opt2}}">{{item.payload.doc.data().opt2}}</label>
+      </div>
+      <div class="funkyradio-primary">
+            <input type="radio" name="radio_{{items.indexOf(item)+1}}" [id]="item.payload.doc.data().opt3" />
+            <label for="{{item.payload.doc.data().opt3}}">{{item.payload.doc.data().opt3}}</label>
+      </div>
+      <div class="funkyradio-primary">
+            <input type="radio" name="radio_{{items.indexOf(item)+1}}" [id]="item.payload.doc.data().opt4" />
+            <label for="{{item.payload.doc.data().opt4}}">{{item.payload.doc.data().opt4}}</label>
+      </div>
+
+    </div>
+    </div>
+  </div>
+        </div>
+
+<!-- </div> -->
 </div>
 
+<div class="container col-md-3 col-md-offset-5">
+<button type="submit" class="btn btn-primary" style="margin-bottom :50px; ">Submit Quiz</button>
+</div>
 
 <!-- <div id="quiz" class="container" style="margin:100px">
   <h1 id="quiz-name"></h1>
@@ -116,4 +152,4 @@
     <button id="quiz-retry-button">Retry</button>
 
   </div>
-</div> -->
+</divdiv> -->

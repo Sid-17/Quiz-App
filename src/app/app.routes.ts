@@ -8,6 +8,7 @@ import { AuthGuard } from './core/auth.guard';
 import { AdminComponent } from './admin/admin.component';
 import { QuizComponent } from './quiz/quiz.component';
 import { AddQuizComponent } from './add-quiz/add-quiz.component';
+import { ResultComponent } from './result/result.component';
 
 const routes: Routes = [];
 
@@ -25,5 +26,6 @@ export const rootRouterConfig: Routes = [
   { path: 'register', component: RegisterComponent, canActivate: [AuthGuard] },
   { path: 'user', component: UserComponent},
   { path: 'quiz', component: QuizComponent},
-  { path: 'add-quiz', component: AddQuizComponent}
+  { path: 'add-quiz', component: AddQuizComponent},
+  { path: 'result', component: ResultComponent}
 ];

@@ -27,14 +27,17 @@ addQuiz(value){
   });
 
 }
-addQuestion(question,op1,op2,op3,op4,ans){
-  this.firestore.collection('/Quizzes/'+'quiz2'+'/Questions').add({
+addQuestion(question,op1,op2,op3,op4,ans,expl,marks:number,quizId,mC:boolean){
+  this.firestore.collection('/Quizzes/'+quizId+'/Questions').add({
     'question': question,
     'opt1':op1,
     'opt2':op2,
     'opt3':op3,
     'opt4':op4,
-    'answer':ans
+    'answer':ans,
+    'explanation':expl,
+    'marks':marks,
+    'multiCorrect':mC
   });
 
 }

@@ -19,18 +19,27 @@ export class QuizComponent implements OnInit {
   ngOnInit() {
     this.cquiz=this.componentService.getId()
     //console.log(this.cquiz);
-    this.getQuestions(this.cquiz);
+    this.getQuestions(this.cquiz)
   }
 
-getQuestions(quiz){
+  getQuestions(quiz){
 
-  this.firebaseService.getQuestions(quiz)
-  .subscribe(result => {
-    this.items = result;
-    console.log(this.items.length)
-  })
-
-}
+    this.firebaseService.getQuestions(quiz)
+    .subscribe(result => {
+      this.items = result;
+      let currentIndex , temporaryValue, randomIndex;
+      currentIndex=this.items.length
+      while (0 !== currentIndex) {
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex -= 1;
+        temporaryValue = this.items[currentIndex];
+        this.items[currentIndex] = this.items[randomIndex];
+        this.items[randomIndex] = temporaryValue;
+      }
+  
+    })
+  
+  }
 
 
 }

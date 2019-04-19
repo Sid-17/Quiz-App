@@ -22,6 +22,7 @@ import { AddQuizComponent } from './add-quiz/add-quiz.component';
 
 import { AppComponent } from './app.component';
 import { AdminComponent } from './admin/admin.component';
+import { ResultComponent } from './result/result.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { AdminComponent } from './admin/admin.component';
     AdminComponent,
     QuizComponent,
     NavbarComponent,
-    AddQuizComponent
+    AddQuizComponent,
+    ResultComponent
   ],
   imports: [
     BrowserModule,
@@ -40,8 +42,8 @@ import { AdminComponent } from './admin/admin.component';
     FormsModule,
     RouterModule.forRoot(rootRouterConfig, { useHash: false }),
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule, // imports firebase/firestore, only needed for database features
-    AngularFireAuthModule // imports firebase/auth, only needed for auth features
+    AngularFirestoreModule,
+    AngularFireAuthModule
   ],
   providers: [AuthService, UserService, UserResolver, AuthGuard],
   bootstrap: [AppComponent]
