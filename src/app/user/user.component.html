@@ -1,8 +1,16 @@
-  <nav class="navbar navbar-default navbar-static-top navbar-inverse">
-    <div class="container">
-      <a (click)="logout()" class="navbar-text navbar-right navbar-link">Logout</a>
-    </div>
-  </nav>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top rounded-0">
+  <a class="navbar-brand" href="#">
+      <img src="assets/qw11.png" height="22"><b>  Quizzy</b>
+  </a>
+  <div id="navbarNavDropdown" class="navbar-collapse collapse">
+  <ul class="navbar-nav mr-auto col-md-11"></ul>
+  <ul class="navbar-nav">
+    <button class="btn btn-success" (click)="logout()">Logout</button>
+    </ul>
+  </div>
+</nav>
+
+
   <div class="center">
   <div class="container col-md-6 col-md-offset-3">
     <h4>Quiz Lists</h4>
