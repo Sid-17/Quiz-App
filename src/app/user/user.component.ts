@@ -18,6 +18,7 @@ export class UserComponent implements OnInit{
   user: FirebaseUserModel = new FirebaseUserModel();
   profileForm: FormGroup;
   items: Array<any>;
+  userName: String;
 
   constructor(
     public userService: UserService,
@@ -33,6 +34,14 @@ export class UserComponent implements OnInit{
   }
 
   ngOnInit(): void {
+
+    this.userName = localStorage.getItem('userName');
+    this.userName = this.userName.slice(0,this.userName.indexOf("@"));
+    console.log(this.userName+" printeddd");
+
+    let order = localStorage.getItem('userName');
+    console.log(order+"this printeddd");
+
     this.route.data.subscribe(routeData => {
       let data = routeData['data'];
       if (data) {
@@ -74,5 +83,6 @@ startQuiz(value){
     }, (error) => {
       console.log("Logout error", error);
     });
+    localStorage.removeItem('userName');
   }
 }

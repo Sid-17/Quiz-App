@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../core/auth.service'
 import { Router, Params } from '@angular/router';
+import { NgModule } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { LOCAL_STORAGE, StorageService, StorageServiceModule } from 'ngx-webstorage-service';
 
 @Component({
   selector: 'page-login',
@@ -34,10 +36,12 @@ export class LoginComponent {
       if(value.email == "qw@qw.com" && value.password == "qwqwqw"){
         console.log(value.email);
         console.log(value.password);
-        this.router.navigate(['/add-quiz']);
+        localStorage.setItem('userName',value.email);
+        this.router.navigate(['/add-quiz'],{queryParams:{user: value.email}});
       }
       else{
-        this.router.navigate(['/user']);
+        localStorage.setItem('userName',value.email);
+        this.router.navigate(['/user'],{queryParams:{user: value.email}});
       }
     }, err => {
       console.log(err);

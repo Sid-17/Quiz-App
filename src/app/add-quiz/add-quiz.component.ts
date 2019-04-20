@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FirebaseService } from '../firebase.service';
 import { AuthService } from '../core/auth.service';
 import { Location } from '@angular/common';
-import { Router, Params } from '@angular/router';
+import 'rxjs/add/operator/filter';
+import { Router, Params, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormArray, FormBuilder, FormControl, Validators } from '@angular/forms';
 
 @Component({
@@ -15,17 +16,24 @@ export class AddQuizComponent implements OnInit {
 
   selectedQuiz: string;
   items: Array<any>;
+  userName: String;
 
   constructor(
     public firebaseService: FirebaseService,
     public authService: AuthService,
     private location : Location,
     private router: Router,
+    private route: ActivatedRoute,
     private fb: FormBuilder
   ) { }
 
 
   ngOnInit(){
+
+    this.userName = localStorage.getItem('userName');
+    this.userName = this.userName.slice(0,this.userName.indexOf("@"));
+    console.log(this.userName+" printeddd");
+
     this.firebaseService.getQuizzes()
     .subscribe(result => {
       this.items = result;
@@ -47,6 +55,7 @@ export class AddQuizComponent implements OnInit {
     }, (error) => {
       console.log("Logout error", error);
     });
+    localStorage.removeItem('userName');
   }
 
   onQuizSelect(event){
@@ -63,41 +72,24 @@ export class AddQuizComponent implements OnInit {
     let countChecked:number=0;
     let answer:string='';
     if(this.toggleCheck(id+'1')){
-      answer+='opt1';
+      answer+='1';
       countChecked++;
     }
     if(this.toggleCheck(id+'2')){
-      if(answer=='')
-      {answer+='opt2';
+      answer+='2';
       countChecked++;
       }
-      else{
-        answer+=','+'opt2';
-        countChecked++;
-      }
-    }
+
     if(this.toggleCheck(id+'3')){
-      if(answer=='')
-      {answer+='opt3';
+      answer+='3';
       countChecked++;
       }
-      else{ answer+=','+'opt3';
-        countChecked++;
-      }
-    }
+
     if(this.toggleCheck(id+'4')){
-      if(answer=='')
-      {
-        answer+='opt4';
+        answer+='4';
         countChecked++;
       }
-      else {
-        answer+=','+'opt4';
-        countChecked++;
-      }
-    }
-  
-  return [answer,countChecked>1];
+    return [answer,countChecked>1];
   }
 
 

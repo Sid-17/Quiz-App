@@ -1,25 +1,13 @@
-<h1 class="header">Create an account with Firebase or Social Providers</h1>
-<div class="container">
-  <div class="row">
-    <div class="col-md-6 col-md-offset-3">
-      <form [formGroup]="registerForm">
-        <div class="form-group">
-          <label>Email address</label>
-          <input type="email" formControlName="email" class="form-control">
-        </div>
-        <div class="form-group">
-          <label>Password</label>
-          <input type="password" class="form-control" formControlName="password">
-          <label class="error">{{errorMessage}}</label>
+<div class="text-center">
+  <form class="form-signin" [formGroup]="registerForm" >
+    <br><br><br><br>
+    <img class="mb-4" src="assets/qw11.png" alt="" height="72">
+    <h1 class="h3 mb-3 font-weight-normal"><b>Register for Quizzy</b></h1><br>
+          <input type="email" formControlName="email" class="form-control" placeholder="Email" required autofocus>
+          <input type="password" formControlName="password" class="form-control" placeholder="Password" required>
           <label class="success">{{successMessage}}</label>
-        </div>
-        <button type="submit" (click)="tryRegister(registerForm.value)" class="btn btn-default">Register</button>
-      </form>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-4 col-md-offset-4">
-      <p>Already have an account? <a href="/login">Login</a></p>
-    </div>
-  </div>
+          <label class="error">{{errorMessage}}</label>
+          <button class="btn btn-lg btn-primary btn-block" (click)="tryRegister(registerForm.value)" type="submit">Register</button><br>
+          <p>Already have an Account? <a class="mt-5 mb-3 text-muted" href="/login">Login</a></p>
+  </form>
 </div>
