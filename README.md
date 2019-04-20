@@ -1,3 +1,13 @@
+write below lines into console to run the application
+npm install
+npm install --save ngx-webstorage-service
+ng serve
+
+now open the localhost:4200 into the browser.
+
+
+
+
 # Angular Firebase CRUD
 
 This project is part of an Angular tutorial where we explore how to perform all CRUD operations in an Angular 7 application using cloud FireStore as a database.
