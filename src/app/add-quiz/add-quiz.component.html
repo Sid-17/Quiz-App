@@ -5,16 +5,18 @@
     <div id="navbarNavDropdown" class="navbar-collapse collapse">
         <ul class="navbar-nav mr-auto col-md-10">
             <li class="nav-item active ">
-                <button class="btn btn-success" (click)="disableDIV = false" data-target="#add_quiz">Add Quiz</button>
+                <button class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Add new quiz" (click)="disableDIV = false"
+                    data-target="#add_quiz">Add Quiz</button>
             </li>
             <li class="nav-item col-md-2">
-                <button class="btn btn-success" (click)="disableDIV = true" data-target="#add_qus">Add Question</button>
+                <button class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Add new question"
+                    (click)="disableDIV = true" data-target="#add_qus">Add Question</button>
             </li>
         </ul>
         <ul class="navbar-nav">
             <li class="nav-item" style="padding:5px; color:whitesmoke; margin-right: 20px"><b>{{userName}}</b></li>
             <li class="nav-item">
-            <button class="btn btn-success" (click)="logout()">Logout</button></li>
+                <button class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Logout" (click)="logout()">Logout</button></li>
         </ul>
     </div>
 </nav>
@@ -24,10 +26,12 @@
 
         <div class="form-group">
             <label for="title">Quiz Title:</label>
-            <input type="text" #quizTitle class="form-control" id="title" (change)="addQuizInDb($event)" [(ngModel)]="n_quizTitle" required>
+            <input type="text" #quizTitle class="form-control" id="title" (change)="addQuizInDb($event)" [(ngModel)]="n_quizTitle"
+                required>
         </div>
         <div class="form-group">
-            <button type="submit" class="btn btn-primary" (click)="addQuizInDb(quizTitle.value)" style="margin: 0px" [disabled]="!n_quizTitle">Add</button>
+            <button type="submit" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Add new quiz"
+                (click)="addQuizInDb(quizTitle.value)" style="margin: 0px">Add</button>
         </div>
 
     </div>
@@ -99,8 +103,9 @@
                 required></textarea>
         </div>
 
-        <div class="form-group container col-md-offset-2" style="padding: 0px">
-            <button type="submit" style="margin:0px" class="btn btn-primary" style="margin: 10px" (click)="addQuestionInQuiz(qArea.value,op1.value,op2.value,op3.value,op4.value,eArea.value,marks.value)"
+        <div class="form-group container col-md-offset-2">
+            <button type="submit" data-toggle="tooltip" data-placement="top" title="Add new question" class="btn btn-primary"
+                style="margin: 10px" (click)="addQuestionInQuiz(qArea.value,op1.value,op2.value,op3.value,op4.value,eArea.value,marks.value)"
                 [disabled]="!n_op1 || !n_op2 || !n_op3 || !n_op4 || !n_sQuiz || !n_qArea || !n_marks || !n_eArea || (!n_checkbox1 && !n_checkbox2 && !n_checkbox3 && !n_checkbox4)">Add</button>
             <!--button type="button" class="btn btn-primary" style="margin: 10px" >Add again</button>
                         <button type="button" class="btn btn-primary" style="margin: 10px" >Close</button-->

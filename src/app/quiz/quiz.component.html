@@ -107,7 +107,7 @@
     <div class="panel-footer" style="padding-left: 50px"
     *ngIf="!(item.payload.doc.data().multiCorrect)">
          <h4>Only one ans is correct</h4>
-    <div class="row">
+    <!-- <div class="row"> -->
 
       <div class="funkyradio" id="{{items.indexOf(item)+1}}">
         <div class="funkyradio-primary">
@@ -128,7 +128,7 @@
       </div>
 
     </div>
-    </div>
+    <!-- </div> -->
   </div>
         </div>
 
@@ -136,7 +136,7 @@
 </div>
 
 <div class="container col-md-3 col-md-offset-5">
-<button type="submit" class="btn btn-primary" style="margin-bottom :50px; ">Submit Quiz</button>
+<button type="submit" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Submit Quiz" style="margin-bottom :50px; ">Submit Quiz</button>
 </div>
 
 <!-- <div id="quiz" class="container" style="margin:100px">

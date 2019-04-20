@@ -6,8 +6,22 @@
           <input type="email" formControlName="email" class="form-control" placeholder="Email" required autofocus>
           <input type="password" formControlName="password" class="form-control" placeholder="Password" required>
           <label class="success">{{successMessage}}</label>
+<<<<<<< HEAD
           <label class="error">{{errorMessage}}</label>
           <button class="btn btn-lg btn-primary btn-block" (click)="tryRegister(registerForm.value)" type="submit">Register</button><br>
           <p>Already have an Account? <a class="mt-5 mb-3 text-muted" href="/login">Login</a></p>
   </form>
 </div>
+=======
+        </div>
+        <button type="submit" data-toggle="tooltip" data-placement="top" title="Register" (click)="tryRegister(registerForm.value)" class="btn btn-primarys">Register</button>
+      </form>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4 col-md-offset-4">
+      <p>Already have an account? <a href="/login">Login</a></p>
+    </div>
+  </div>
+</div>
+>>>>>>> 0f12d8ed14930d0ff417bd7266e684fd017f4e26

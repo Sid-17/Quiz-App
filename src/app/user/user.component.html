@@ -3,10 +3,10 @@
     <img src="assets/qw11.png" height="22"><b> Quizzy</b>
   </a>
   <div id="navbarNavDropdown" class="navbar-collapse collapse">
-    <ul class="navbar-nav mr-auto col-md-10"></ul>
-    <ul class="navbar-nav">
+  <ul class="navbar-nav mr-auto col-md-10"></ul>
+  <ul class="navbar-nav">
       <li class="navbar-item" style="padding:5px; color:whitesmoke; margin-right: 20px"><b>{{userName}}</b></li>
-      <li class="navbar-item"><button class="btn btn-success" (click)="logout()">Logout</button></li>
+      <li class="navbar-item"><button class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Logout" (click)="logout()">Logout</button></li>
     </ul>
   </div>
 </nav>
@@ -25,14 +25,14 @@
         </tr>
       </thead>
 
-      <tbody>
-        <tr *ngFor="let item of items">
-          <th scope="row">{{items.indexOf(item)+1}}</th>
-          <td #qname>{{item.payload.doc.id}}</td>
-          <td>
-            <button type="submit" class="btn btn-primary m-0" (click)="startQuiz(qname.innerText)">Start Quiz</button>
-          </td>
-        </tr>
+    <tbody>
+      <tr *ngFor="let item of items">
+        <th scope="row">{{items.indexOf(item)+1}}</th>
+        <td #qname>{{item.payload.doc.id}}</td>
+        <td>
+          <button type="submit" class="btn btn-primary m-0" data-toggle="tooltip" data-placement="top" title="Start {{item.payload.doc.id}} Quiz" (click)="startQuiz(qname.innerText)">Start Quiz</button>
+        </td>
+      </tr>
       </tbody>
     </table>
   </div>
