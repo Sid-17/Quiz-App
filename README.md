@@ -1,6 +1,9 @@
-write below lines into console to run the application
+write below lines into console to run the application::
+
 npm install
+
 npm install --save ngx-webstorage-service
+
 ng serve
 
 now open the localhost:4200 into the browser.
