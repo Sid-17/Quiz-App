@@ -31,7 +31,7 @@
         </div>
         <div class="form-group">
             <button type="submit" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Add new quiz"
-                (click)="addQuizInDb(quizTitle.value)" style="margin: 0px">Add</button>
+                (click)="addQuizInDb(quizTitle.value)" [disabled]="!n_quizTitle" style="margin: 0px">Add</button>
         </div>
 
     </div>
@@ -105,7 +105,7 @@
 
         <div class="form-group container col-md-offset-2">
             <button type="submit" data-toggle="tooltip" data-placement="top" title="Add new question" class="btn btn-primary"
-                style="margin: 10px" (click)="addQuestionInQuiz(qArea.value,op1.value,op2.value,op3.value,op4.value,eArea.value,marks.value)"
+                style="margin: 0px" (click)="addQuestionInQuiz(qArea.value,op1.value,op2.value,op3.value,op4.value,eArea.value,marks.value)"
                 [disabled]="!n_op1 || !n_op2 || !n_op3 || !n_op4 || !n_sQuiz || !n_qArea || !n_marks || !n_eArea || (!n_checkbox1 && !n_checkbox2 && !n_checkbox3 && !n_checkbox4)">Add</button>
             <!--button type="button" class="btn btn-primary" style="margin: 10px" >Add again</button>
                         <button type="button" class="btn btn-primary" style="margin: 10px" >Close</button-->
