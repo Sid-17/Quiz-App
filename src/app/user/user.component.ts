@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../core/user.service';
-import { AuthService } from '../core/auth.service';
+import { AuthService } from '../core/auth.service'
 import { ActivatedRoute,Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -10,7 +10,7 @@ import { ComponentService } from '../component.service';
 @Component({
   selector: 'page-user',
   templateUrl: 'user.component.html',
-  styleUrls: ['user.scss'],
+  styleUrls: ['user.component.scss'],
   providers:[FirebaseService]
 })
 export class UserComponent implements OnInit{
@@ -30,14 +30,20 @@ export class UserComponent implements OnInit{
     public componentService: ComponentService,
     private router: Router
   ) {
-
+    this.userName = localStorage.getItem('userName');
+    this.userName = this.userName.slice(0,this.userName.indexOf("@"));
+    if(this.userName == "qw")
+    {
+      this.router.navigate(['/add-quiz']);
+    }
+    else if(this.userName == null)
+    {
+      localStorage.removeItem('userName');
+      this.router.navigate(['/login']);
+    }
   }
 
   ngOnInit(): void {
-
-    this.userName = localStorage.getItem('userName');
-    this.userName = this.userName.slice(0,this.userName.indexOf("@"));
-    console.log(this.userName+" printeddd");
 
     let order = localStorage.getItem('userName');
     console.log(order+"this printeddd");

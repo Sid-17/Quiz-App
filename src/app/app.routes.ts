@@ -27,5 +27,6 @@ export const rootRouterConfig: Routes = [
   { path: 'user', component: UserComponent},
   { path: 'quiz', component: QuizComponent},
   { path: 'add-quiz', component: AddQuizComponent},
-  { path: 'result', component: ResultComponent}
+  { path: 'result', component: ResultComponent},
+  { path: '**', component: LoginComponent, canActivate: [AuthGuard] }
 ];

@@ -7,75 +7,78 @@
       <h4>Result</h4>
     </div>
     <div class="panel-body">
-      <h4><span class="label label-primary">Total Questions :10</span></h4>
-      <h4><span class="label label-success">Correct Answers : 6</span></h4>
-      <h4><span class="label label-danger">Wrong Answers: 2</span></h4>
-      <h4><span class="label label-info">No.of Questions Left blank:2</span></h4>
-      <h4><span class="label label-primary">Total Marks:60/100</span></h4>
-      <h4><span class="label label-primary">Accuracy:60%</span></h4>
+      <h4><span class="label label-primary">Total Questions : {{tQ}}</span></h4>
+      <h4><span class="label label-success">Correct Answers : {{cQ}}</span></h4>
+      <h4><span class="label label-danger">Wrong Answers: {{wQ}}</span></h4>
+      <h4><span class="label label-info">No.of Questions Left blank: {{bQ}}</span></h4>
+      <h4><span class="label label-primary">Total Marks: {{score}}</span></h4>
+      <h4><span class="label label-primary">Accuracy: {{accuracy}}%</span></h4>
     </div>
   </div>
 </div>
 
-<div class="container col-md-10 col-md-offset-1" id="{{items.indexOf(item)+1}}" *ngFor="let item of items">
+<div class="container col-md-10 col-md-offset-1"  id="{{items.indexOf(item)+1}}" *ngFor="let item of items">
 
   <br />
   <div class="panel panel-primary">
     <div class="panel-heading">
-      <h4>{{items.indexOf(item)+1}}. {{item.payload.doc.data().question}}</h4>
+      <h4>{{items.indexOf(item)+1}}. {{queMap.get(item)}}</h4>
     </div>
 
-    <div class="panel-footer" style="padding-left: 50px" *ngIf="(item.payload.doc.data().multiCorrect)">
-      <h4><span class="label label-success">Correct</span></h4>
-      <h4><span class="label label-danger">Incorrect</span></h4>
+    <div class="panel-footer" style="padding-left: 50px" *ngIf="(mcMap.get(item))">
+      <h4 *ngIf="(evalMap.get(item)==1)"><span class="label label-success">Correct</span></h4>
+      <h4 *ngIf="(evalMap.get(item)==-1)"><span class="label label-danger">Incorrect</span></h4>
 
       <div class="funkyradio" id="{{items.indexOf(item)+1}}">
         <div class="funkyradio-primary">
-          <input type="checkbox" name="checkbox_{{items.indexOf(item)+1}}" id="checkbox1{{items.indexOf(item)+1}}" />
-          <label for="checkbox1{{items.indexOf(item)+1}}">{{item.payload.doc.data().opt1}}</label>
+          <input [disabled]="true" type="checkbox" [checked]="cBoxMap.get('c1_'+items[items.indexOf(item)])==true" name="checkbox_{{items.indexOf(item)+1}}" id="c1_{{items[items.indexOf(item)]}}" />
+          <label for="c1_{{items[items.indexOf(item)]}}">{{op1Map.get(item)}}</label>
         </div>
         <div class="funkyradio-primary">
-          <input type="checkbox" name="checkbox_{{items.indexOf(item)+1}}" id="checkbox2{{items.indexOf(item)+1}}" />
-          <label for="checkbox2{{items.indexOf(item)+1}}">{{item.payload.doc.data().opt2}}</label>
+          <input [disabled]="true" type="checkbox" [checked]="cBoxMap.get('c2_'+items[items.indexOf(item)])==true" name="checkbox_{{items.indexOf(item)+1}}" id="c2_{{items[items.indexOf(item)]}}" />
+          <label for="c2_{{items[items.indexOf(item)]}}">{{op2Map.get(item)}}</label>
         </div>
         <div class="funkyradio-primary">
-          <input type="checkbox" name="checkbox_{{items.indexOf(item)+1}}" id="checkbox3{{items.indexOf(item)+1}}" />
-          <label for="checkbox3{{items.indexOf(item)+1}}">{{item.payload.doc.data().opt3}}</label>
+          <input [disabled]="true" type="checkbox" [checked]="cBoxMap.get('c3_'+items[items.indexOf(item)])==true" name="checkbox_{{items.indexOf(item)+1}}" id="c3_{{items[items.indexOf(item)]}}" />
+          <label for="c3_{{items[items.indexOf(item)]}}">{{op3Map.get(item)}}</label>
         </div>
         <div class="funkyradio-primary">
-          <input type="checkbox" name="checkbox_{{items.indexOf(item)+1}}" id="checkbox4{{items.indexOf(item)+1}}" />
-          <label for="checkbox4{{items.indexOf(item)+1}}">{{item.payload.doc.data().opt4}}</label>
+          <input [disabled]="true" type="checkbox" [checked]="cBoxMap.get('c4_'+items[items.indexOf(item)])==true" name="checkbox_{{items.indexOf(item)+1}}" id="c4_{{items[items.indexOf(item)]}}" />
+          <label for="c4_{{items[items.indexOf(item)]}}">{{op4Map.get(item)}}</label>
         </div>
       </div>
 
     </div>
-    <div class="panel-footer" style="padding-left: 50px" *ngIf="!(item.payload.doc.data().multiCorrect)">
-      <div class="row">
+    <div class="panel-footer" style="padding-left: 50px" *ngIf="!(mcMap.get(item))">
+
+      <h4 *ngIf="(evalMap.get(item)==1)"><span class="label label-success">Correct</span></h4>
+      <h4 *ngIf="(evalMap.get(item)==-1)"><span class="label label-danger">Incorrect</span></h4>
+
 
         <div class="funkyradio" id="{{items.indexOf(item)+1}}">
           <div class="funkyradio-primary">
-            <input type="radio" name="radio_{{items.indexOf(item)+1}}" [id]="item.payload.doc.data().opt1" />
-            <label for="{{item.payload.doc.data().opt1}}">{{item.payload.doc.data().opt1}}</label>
+            <input  [disabled]="true" type="radio" [checked]="cBoxMap.get('c1_'+items[items.indexOf(item)])==true" name="radio_{{items.indexOf(item)+1}}" id="c1_{{items[items.indexOf(item)]}}" />
+            <label for="c1_{{items[items.indexOf(item)]}}">{{op1Map.get(item)}}</label>
           </div>
           <div class="funkyradio-primary">
-            <input type="radio" name="radio_{{items.indexOf(item)+1}}" [id]="item.payload.doc.data().opt2" />
-            <label for="{{item.payload.doc.data().opt2}}">{{item.payload.doc.data().opt2}}</label>
+            <input  [disabled]="true" type="radio" [checked]="cBoxMap.get('c2_'+items[items.indexOf(item)])==true" name="radio_{{items.indexOf(item)+1}}" id="c2_{{items[items.indexOf(item)]}}" />
+            <label for="c2_{{items[items.indexOf(item)]}}">{{op2Map.get(item)}}</label>
           </div>
           <div class="funkyradio-primary">
-            <input type="radio" name="radio_{{items.indexOf(item)+1}}" [id]="item.payload.doc.data().opt3" />
-            <label for="{{item.payload.doc.data().opt3}}">{{item.payload.doc.data().opt3}}</label>
+            <input  [disabled]="true" type="radio" [checked]="cBoxMap.get('c3_'+items[items.indexOf(item)])==true" name="radio_{{items.indexOf(item)+1}}" id="c3_{{items[items.indexOf(item)]}}" />
+            <label for="c3_{{items[items.indexOf(item)]}}">{{op3Map.get(item)}}</label>
           </div>
           <div class="funkyradio-primary">
-            <input type="radio" name="radio_{{items.indexOf(item)+1}}" [id]="item.payload.doc.data().opt4" />
-            <label for="{{item.payload.doc.data().opt4}}">{{item.payload.doc.data().opt4}}</label>
+            <input  [disabled]="true" type="radio" [checked]="cBoxMap.get('c4_'+items[items.indexOf(item)])==true" name="radio_{{items.indexOf(item)+1}}" id="c4_{{items[items.indexOf(item)]}}" />
+            <label for="c4_{{items[items.indexOf(item)]}}">{{op4Map.get(item)}}</label>
           </div>
 
         </div>
-      </div>
+
     </div>
   </div>
 
 </div>
 <div class="container col-md-3 col-md-offset-5">
-  <button type="submit" class="btn btn-primary" style="margin-bottom :50px;">Close</button>
+  <button type="submit" class="btn btn-primary" style="margin-bottom :50px;" (click)="close()">Close</button>
 </div>

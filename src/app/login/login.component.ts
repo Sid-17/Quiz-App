@@ -37,11 +37,11 @@ export class LoginComponent {
         console.log(value.email);
         console.log(value.password);
         localStorage.setItem('userName',value.email);
-        this.router.navigate(['/add-quiz'],{queryParams:{user: value.email}});
+        this.router.navigate(['/add-quiz']);
       }
       else{
         localStorage.setItem('userName',value.email);
-        this.router.navigate(['/user'],{queryParams:{user: value.email}});
+        this.router.navigate(['/user']);
       }
     }, err => {
       console.log(err);

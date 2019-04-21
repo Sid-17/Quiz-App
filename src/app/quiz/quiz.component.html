@@ -14,20 +14,20 @@
 
                 <div class="funkyradio" id="{{items.indexOf(item)+1}}">
                 <div class="funkyradio-primary">
-                <input type="checkbox" name="checkbox_{{items.indexOf(item)+1}}" id="checkbox1{{items.indexOf(item)+1}}" />
-                <label for="checkbox1{{items.indexOf(item)+1}}">{{item.payload.doc.data().opt1}}</label>
+                <input type="checkbox" name="checkbox_{{items.indexOf(item)+1}}" id="c1_{{item.payload.doc.id}}" />
+                <label for="c1_{{item.payload.doc.id}}">{{item.payload.doc.data().opt1}}</label>
             </div>
             <div class="funkyradio-primary">
-               <input type="checkbox" name="checkbox_{{items.indexOf(item)+1}}" id="checkbox2{{items.indexOf(item)+1}}" />
-               <label for="checkbox2{{items.indexOf(item)+1}}">{{item.payload.doc.data().opt2}}</label>
+               <input type="checkbox" name="checkbox_{{items.indexOf(item)+1}}" id="c2_{{item.payload.doc.id}}" />
+               <label for="c2_{{item.payload.doc.id}}">{{item.payload.doc.data().opt2}}</label>
             </div>
             <div class="funkyradio-primary">
-                <input type="checkbox" name="checkbox_{{items.indexOf(item)+1}}" id="checkbox3{{items.indexOf(item)+1}}" />
-                <label for="checkbox3{{items.indexOf(item)+1}}">{{item.payload.doc.data().opt3}}</label>
+                <input type="checkbox" name="checkbox_{{items.indexOf(item)+1}}" id="c3_{{item.payload.doc.id}}" />
+                <label for="c3_{{item.payload.doc.id}}">{{item.payload.doc.data().opt3}}</label>
             </div>
             <div class="funkyradio-primary">
-                <input type="checkbox" name="checkbox_{{items.indexOf(item)+1}}" id="checkbox4{{items.indexOf(item)+1}}" />
-                <label for="checkbox4{{items.indexOf(item)+1}}">{{item.payload.doc.data().opt4}}</label>
+                <input type="checkbox" name="checkbox_{{items.indexOf(item)+1}}" id="c4_{{item.payload.doc.id}}" />
+                <label for="c4_{{item.payload.doc.id}}">{{item.payload.doc.data().opt4}}</label>
             </div>
         </div>
 
@@ -39,20 +39,20 @@
 
       <div class="funkyradio" id="{{items.indexOf(item)+1}}">
         <div class="funkyradio-primary">
-            <input type="radio" name="radio_{{items.indexOf(item)+1}}" [id]="item.payload.doc.data().opt1" />
-            <label for="{{item.payload.doc.data().opt1}}">{{item.payload.doc.data().opt1}}</label>
+            <input type="radio" name="radio_{{items.indexOf(item)+1}}" id="c1_{{item.payload.doc.id}}" />
+            <label for="c1_{{item.payload.doc.id}}">{{item.payload.doc.data().opt1}}</label>
       </div>
       <div class="funkyradio-primary">
-            <input type="radio" name="radio_{{items.indexOf(item)+1}}" [id]="item.payload.doc.data().opt2" />
-            <label for="{{item.payload.doc.data().opt2}}">{{item.payload.doc.data().opt2}}</label>
+            <input type="radio" name="radio_{{items.indexOf(item)+1}}" id="c2_{{item.payload.doc.id}}" />
+            <label for="c2_{{item.payload.doc.id}}">{{item.payload.doc.data().opt2}}</label>
       </div>
       <div class="funkyradio-primary">
-            <input type="radio" name="radio_{{items.indexOf(item)+1}}" [id]="item.payload.doc.data().opt3" />
-            <label for="{{item.payload.doc.data().opt3}}">{{item.payload.doc.data().opt3}}</label>
+            <input type="radio" name="radio_{{items.indexOf(item)+1}}" id="c3_{{item.payload.doc.id}}" />
+            <label for="c3_{{item.payload.doc.id}}">{{item.payload.doc.data().opt3}}</label>
       </div>
       <div class="funkyradio-primary">
-            <input type="radio" name="radio_{{items.indexOf(item)+1}}" [id]="item.payload.doc.data().opt4" />
-            <label for="{{item.payload.doc.data().opt4}}">{{item.payload.doc.data().opt4}}</label>
+            <input type="radio" name="radio_{{items.indexOf(item)+1}}" id="c4_{{item.payload.doc.id}}" />
+            <label for="c4_{{item.payload.doc.id}}">{{item.payload.doc.data().opt4}}</label>
       </div>
 
     </div>
@@ -64,7 +64,7 @@
 </div>
 
 <div class="container col-md-3 col-md-offset-5">
-<button type="submit" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Submit Quiz" style="margin-bottom :50px; ">Submit Quiz</button>
+<button type="submit" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Submit Quiz" style="margin-bottom :50px;" (click)="onSubmitQuiz()" >Submit Quiz</button>
 </div>
 
 <!-- <div id="quiz" class="container" style="margin:100px">
