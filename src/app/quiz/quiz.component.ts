@@ -15,7 +15,7 @@ export class QuizComponent implements OnInit {
 
   cquiz: string;
   items: Array<any>;
-  userName: String;
+  userName: string;
   qIds = [];
   queMap = new Map();
   ansMap = new Map();
