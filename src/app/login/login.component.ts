@@ -33,7 +33,7 @@ export class LoginComponent {
   tryLogin(value){
     this.authService.doLogin(value)
     .then(res => {
-      if(value.email == "qw@qw.com" && value.password == "qwqwqw"){
+      if(value.email == "admin@admin.com" && value.password == "admin123"){
         console.log(value.email);
         console.log(value.password);
         localStorage.setItem('userName',value.email);

@@ -1,83 +1,93 @@
-<div class="container col-md-2 col-md-offset-5">
-    <h3>{{cquiz}} </h3>
-</div>
-<div class="container col-md-10 col-md-offset-1"  id="{{items.indexOf(item)+1}}" *ngFor="let item of items">
-	<!-- <div class="row"> -->
-	    <br/>
-        <div class="panel panel-primary" >
-             <div class="panel-heading">
-                  <h4>{{items.indexOf(item)+1}}. {{item.payload.doc.data().question}}</h4>
-             </div>
-
-          <div class="panel-footer" style="padding-left: 50px" *ngIf="(item.payload.doc.data().multiCorrect)">
-                 <h4>More than one ans are correct</h4>
-
-                <div class="funkyradio" id="{{items.indexOf(item)+1}}">
-                <div class="funkyradio-primary">
-                <input type="checkbox" name="checkbox_{{items.indexOf(item)+1}}" id="c1_{{item.payload.doc.id}}" />
-                <label for="c1_{{item.payload.doc.id}}">{{item.payload.doc.data().opt1}}</label>
-            </div>
-            <div class="funkyradio-primary">
-               <input type="checkbox" name="checkbox_{{items.indexOf(item)+1}}" id="c2_{{item.payload.doc.id}}" />
-               <label for="c2_{{item.payload.doc.id}}">{{item.payload.doc.data().opt2}}</label>
-            </div>
-            <div class="funkyradio-primary">
-                <input type="checkbox" name="checkbox_{{items.indexOf(item)+1}}" id="c3_{{item.payload.doc.id}}" />
-                <label for="c3_{{item.payload.doc.id}}">{{item.payload.doc.data().opt3}}</label>
-            </div>
-            <div class="funkyradio-primary">
-                <input type="checkbox" name="checkbox_{{items.indexOf(item)+1}}" id="c4_{{item.payload.doc.id}}" />
-                <label for="c4_{{item.payload.doc.id}}">{{item.payload.doc.data().opt4}}</label>
-            </div>
-        </div>
-
-  </div>
-    <div class="panel-footer" style="padding-left: 50px"
-    *ngIf="!(item.payload.doc.data().multiCorrect)">
-         <h4>Only one ans is correct</h4>
-    <!-- <div class="row"> -->
-
-      <div class="funkyradio" id="{{items.indexOf(item)+1}}">
-        <div class="funkyradio-primary">
-            <input type="radio" name="radio_{{items.indexOf(item)+1}}" id="c1_{{item.payload.doc.id}}" />
-            <label for="c1_{{item.payload.doc.id}}">{{item.payload.doc.data().opt1}}</label>
-      </div>
-      <div class="funkyradio-primary">
-            <input type="radio" name="radio_{{items.indexOf(item)+1}}" id="c2_{{item.payload.doc.id}}" />
-            <label for="c2_{{item.payload.doc.id}}">{{item.payload.doc.data().opt2}}</label>
-      </div>
-      <div class="funkyradio-primary">
-            <input type="radio" name="radio_{{items.indexOf(item)+1}}" id="c3_{{item.payload.doc.id}}" />
-            <label for="c3_{{item.payload.doc.id}}">{{item.payload.doc.data().opt3}}</label>
-      </div>
-      <div class="funkyradio-primary">
-            <input type="radio" name="radio_{{items.indexOf(item)+1}}" id="c4_{{item.payload.doc.id}}" />
-            <label for="c4_{{item.payload.doc.id}}">{{item.payload.doc.data().opt4}}</label>
-      </div>
-
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark navbar-fixed-top rounded-0" >
+    <a class="navbar-brand" href="#">
+        <img src="assets/qw11.png" height="22"><b> Quizzy</b>
+    </a>
+    <div id="navbarNavDropdown" class="navbar-collapse collapse">
+        <ul class="navbar-nav mr-auto col-md-10"></ul>
+        <ul class="navbar-nav">
+            <li class="navbar-item" style="padding:5px; color:whitesmoke; margin-right: 20px"><b>{{userName}}</b></li>
+            <li class="navbar-item"><button class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Logout"
+                    (click)="logout()">Logout</button></li>
+        </ul>
     </div>
-    <!-- </div> -->
-  </div>
+</nav>
+
+<div class="container col-md-2 col-md-offset-5" style="font-family: monospace; margin-top:70px">
+    <h2 style="font-family: monospace"><b>{{cquiz}}</b></h2>
+</div>
+<div class="container col-md-10 col-md-offset-1" id="{{items.indexOf(item)+1}}" *ngFor="let item of items">
+    <!-- <div class="row"> -->
+    <br />
+    <div class="panel panel-primary" style="border: 0px; margin-bottom: 5px;">
+        <div class="panel-heading" style="padding-top:1px; padding-bottom:0px;">
+            <h4 style="font-family: monospace">{{items.indexOf(item)+1}}. {{item.payload.doc.data().question}}</h4>
         </div>
 
-<!-- </div> -->
+        <div class="panel-footer" style="padding-left: 20px" *ngIf="(item.payload.doc.data().multiCorrect)">
+            <h5 style="font-family: monospace">More than one ans are correct</h5>
+
+            <div class="funkyradio" id="{{items.indexOf(item)+1}}">
+
+                <div class="row">
+                <div class="funkyradio-primary col-md-6" >
+                    <input type="checkbox" name="checkbox_{{items.indexOf(item)+1}}" id="c1_{{item.payload.doc.id}}" />
+                    <label for="c1_{{item.payload.doc.id}}">{{item.payload.doc.data().opt1}}</label>
+                </div>
+                <div class="funkyradio-primary col-md-6" >
+                    <input type="checkbox" name="checkbox_{{items.indexOf(item)+1}}" id="c2_{{item.payload.doc.id}}" />
+                    <label for="c2_{{item.payload.doc.id}}">{{item.payload.doc.data().opt2}}</label>
+                </div>
+                </div>
+
+                <div class="row">
+                <div class="funkyradio-primary col-md-6" >
+                    <input type="checkbox" name="checkbox_{{items.indexOf(item)+1}}" id="c3_{{item.payload.doc.id}}" />
+                    <label for="c3_{{item.payload.doc.id}}">{{item.payload.doc.data().opt3}}</label>
+                </div>
+                <div class="funkyradio-primary col-md-6" >
+                    <input type="checkbox" name="checkbox_{{items.indexOf(item)+1}}" id="c4_{{item.payload.doc.id}}" />
+                    <label for="c4_{{item.payload.doc.id}}">{{item.payload.doc.data().opt4}}</label>
+                </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="panel-footer" style="padding-left: 20px" *ngIf="!(item.payload.doc.data().multiCorrect)">
+            <h5 style="font-family: monospace">Only one ans is correct</h5>
+
+            <div class="funkyradio" id="{{items.indexOf(item)+1}}">
+
+                <div class="row">
+                <div class="funkyradio-primary col-md-6" >
+                    <input type="radio" name="radio_{{items.indexOf(item)+1}}" id="c1_{{item.payload.doc.id}}" />
+                    <label for="c1_{{item.payload.doc.id}}">{{item.payload.doc.data().opt1}}</label>
+                </div>
+                <div class="funkyradio-primary col-md-6" >
+                    <input type="radio" name="radio_{{items.indexOf(item)+1}}" id="c2_{{item.payload.doc.id}}" />
+                    <label for="c2_{{item.payload.doc.id}}">{{item.payload.doc.data().opt2}}</label>
+                </div>
+                </div>
+
+                <div class="row">
+                <div class="funkyradio-primary col-md-6" >
+                    <input type="radio" name="radio_{{items.indexOf(item)+1}}" id="c3_{{item.payload.doc.id}}" />
+                    <label for="c3_{{item.payload.doc.id}}">{{item.payload.doc.data().opt3}}</label>
+                </div>
+                <div class="funkyradio-primary col-md-6" >
+                    <input type="radio" name="radio_{{items.indexOf(item)+1}}" id="c4_{{item.payload.doc.id}}" />
+                    <label for="c4_{{item.payload.doc.id}}">{{item.payload.doc.data().opt4}}</label>
+                </div>
+                </div>
+
+            </div>
+            <!-- </div> -->
+        </div>
+    </div>
+
+    <!-- </div> -->
 </div>
 
 <div class="container col-md-3 col-md-offset-5">
-<button type="submit" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Submit Quiz" style="margin-bottom :50px;" (click)="onSubmitQuiz()" >Submit Quiz</button>
+    <button type="submit" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Submit Quiz" style="margin-bottom :50px; margin-top:30px"
+        (click)="onSubmitQuiz()">Submit Quiz</button>
 </div>
-
-<!-- <div id="quiz" class="container" style="margin:100px">
-  <h1 id="quiz-name"></h1>
-  <button id="submit-button">Submit Answers</button>
-  <button id="next-question-button">Next Question</button>
-  <button id="prev-question-button">Previous</button>
-
-  <div id="quiz-results">
-
-    <p id="quiz-results-message"></p>
-    <p id="quiz-results-score"></p>
-    <button id="quiz-retry-button">Retry</button>
-
-  </div>
-</divdiv> -->

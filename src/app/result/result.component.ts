@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ComponentService } from '../component.service';
 import { Router } from '@angular/router';
+import { AuthService } from '../core/auth.service';
 
 @Component({
   selector: 'app-result',
@@ -10,6 +11,7 @@ import { Router } from '@angular/router';
 export class ResultComponent implements OnInit {
 
   tQ:number
+  userName: String
   bQ:number
   cQ:number
   wQ:number
@@ -28,9 +30,14 @@ export class ResultComponent implements OnInit {
   evalMap  = new Map();
   queMap   = new Map();
 
-  constructor(public componentService: ComponentService,
-  private router: Router
-  ) { }
+  constructor(
+    public componentService: ComponentService,
+    public authService: AuthService,
+    private router: Router
+  ) {
+    this.userName = localStorage.getItem('userName');
+    this.userName = this.userName.slice(0, this.userName.indexOf("@"));
+   }
 
   ngOnInit() {
     this.bQ=this.componentService.getBlankQuestions()
@@ -55,6 +62,17 @@ export class ResultComponent implements OnInit {
 
   close() {
     this.router.navigate(['/user']);
+  }
+
+  logout(){
+    this.authService.doLogout()
+    .then((res) => {
+      // this.location.back();
+      this.router.navigate(['/login']);
+    }, (error) => {
+      console.log("Logout error", error);
+    });
+    localStorage.removeItem('userName');
   }
 
 }

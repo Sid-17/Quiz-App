@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist/angular-firebase-crud",
+    "public": "dist/Quiz-App",
     "ignore": [
       "firebase.json",
       "**/.*",

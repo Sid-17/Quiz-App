@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FirebaseService } from '../firebase.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ComponentService } from '../component.service';
+import { AuthService } from '../core/auth.service';
 
 @Component({
   selector: 'app-quiz',
@@ -31,7 +32,8 @@ export class QuizComponent implements OnInit {
   constructor(
     public firebaseService: FirebaseService,
     public componentService: ComponentService,
-    private router: Router
+    private router: Router,
+    public authService: AuthService
   ) {
     this.userName = localStorage.getItem('userName');
     this.userName = this.userName.slice(0, this.userName.indexOf("@"));
@@ -39,7 +41,7 @@ export class QuizComponent implements OnInit {
       this.router.navigate(['/login']);
     }
     else {
-      if (this.userName == "qw") {
+      if (this.userName == "admin") {
         this.router.navigate(['/add-quiz']);
       }
       else {
@@ -135,7 +137,7 @@ export class QuizComponent implements OnInit {
     this.componentService.setResult(tQ, cQ, wQ, bQ, score, this.qIds, this.ansMap,
       this.marksMap, this.evalMap, this.explMap, this.mcMap, this.op1Map,
       this.op2Map, this.op3Map, this.op4Map, this.cBoxMap, this.queMap);
-
+      alert("Quiz Submitted");
     this.router.navigate(['/result']);
 
   }
@@ -163,6 +165,17 @@ export class QuizComponent implements OnInit {
   toggleCheck(id) {
     let element = <HTMLInputElement>document.getElementById(id);
     return (element.checked);
+  }
+
+  logout(){
+    this.authService.doLogout()
+    .then((res) => {
+      // this.location.back();
+      this.router.navigate(['/login']);
+    }, (error) => {
+      console.log("Logout error", error);
+    });
+    localStorage.removeItem('userName');
   }
 
 }

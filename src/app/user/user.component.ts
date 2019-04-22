@@ -32,7 +32,7 @@ export class UserComponent implements OnInit{
   ) {
     this.userName = localStorage.getItem('userName');
     this.userName = this.userName.slice(0,this.userName.indexOf("@"));
-    if(this.userName == "qw")
+    if(this.userName == "admin")
     {
       this.router.navigate(['/add-quiz']);
     }

@@ -39,7 +39,7 @@ export class AddQuizComponent implements OnInit {
   ) {
     this.userName = localStorage.getItem('userName');
     this.userName = this.userName.slice(0, this.userName.indexOf("@"));
-    if (this.userName != "qw") {
+    if (this.userName != "admin") {
       this.router.navigate(['/user']);
     }
     else if (this.userName == null) {
@@ -61,6 +61,7 @@ export class AddQuizComponent implements OnInit {
   addQuizInDb(value) {
     console.log(value);
     this.firebaseService.addQuiz(value);
+    alert("Quiz Added");
   }
 
   logout() {
