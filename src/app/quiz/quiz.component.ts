@@ -111,12 +111,18 @@ export class QuizComponent implements OnInit {
         this.evalMap.set(k, 0)
       }
       else {
-        for (let i of v) {
-          if (!this.toggleCheck("c" + i + "_" + k)) {
+        for (let i of '1234') {
+          if(v.search(i)!==-1)
+          {if (!this.toggleCheck("c" + i + "_" + k)) {
             flag = false;
+          }
+          else {
+            if(this.toggleCheck("c" + i + "_" + k))
+            flag=false;
           }
 
         }
+      }
         if (flag) {
           cQ++;
           this.evalMap.set(k, 1);
