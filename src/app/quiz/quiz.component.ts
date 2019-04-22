@@ -113,7 +113,8 @@ export class QuizComponent implements OnInit {
       else {
         for (let i of '1234') {
           if(v.search(i)!==-1)
-          {if (!this.toggleCheck("c" + i + "_" + k)) {
+          {
+            if (!this.toggleCheck("c" + i + "_" + k)) {
             flag = false;
           }
           else {
