@@ -11,4 +11,4 @@ write below lines into console to run the application::
 now open the `http://localhost:4200/` into the browser.
 
 ⭐⭐⭐
-
+1:55
