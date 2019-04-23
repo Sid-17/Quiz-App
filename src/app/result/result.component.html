@@ -14,7 +14,7 @@
 
 
 <div class="container col-md-2 col-md-offset-5" style="font-family: monospace; margin-top:70px">
-  <h3>{{cquiz}} </h3>
+  <h3 style="font-family: monospace">{{cquiz}} </h3>
 </div>
 <div class="container col-md-8 col-md-offset-2">
   <div class="panel panel-info">
@@ -38,7 +38,8 @@
   <div class="panel panel-primary" style="border: 0px; margin-bottom: 5px;">
     <div class="panel-heading" style="padding-top:1px; padding-bottom:0px;">
       <h4 style="font-family: monospace">{{items.indexOf(item)+1}}. {{queMap.get(item)}}</h4>
-      <div class = "pull-right"> <h4 style="color:brown;font-family: monospace"><b>Marks: {{marksMap.get(item)}}</b></h4></div>
+      <div class = "pull-right"> <h4 style="color:brown;font-family: monospace"><b>Marks: {{marksMap.get(item)}}</b></h4>
+        </div>
     </div>
 
     <div class="panel-footer" style="padding-left: 20px" *ngIf="(mcMap.get(item))">
@@ -47,28 +48,28 @@
 
       <div class="funkyradio" id="{{items.indexOf(item)+1}}">
         <div class="row">
-        <div class="funkyradio-primary col-md-5">
-          <input [disabled]="true" type="checkbox" [checked]="cBoxMap.get('c1_'+items[items.indexOf(item)])==true" name="checkbox_{{items.indexOf(item)+1}}"
-            id="c1_{{items[items.indexOf(item)]}}" />
-          <label for="c1_{{items[items.indexOf(item)]}}">{{op1Map.get(item)}}</label>
-        </div>
-        <div class="funkyradio-primary col-md-5">
-          <input [disabled]="true" type="checkbox" [checked]="cBoxMap.get('c2_'+items[items.indexOf(item)])==true" name="checkbox_{{items.indexOf(item)+1}}"
-            id="c2_{{items[items.indexOf(item)]}}" />
-          <label for="c2_{{items[items.indexOf(item)]}}">{{op2Map.get(item)}}</label>
-        </div>
+          <div class="funkyradio-primary col-md-5">
+            <input [disabled]="true" type="checkbox" [checked]="cBoxMap.get('c1_'+items[items.indexOf(item)])==true"
+              name="checkbox_{{items.indexOf(item)+1}}" id="c1_{{items[items.indexOf(item)]}}" />
+            <label for="c1_{{items[items.indexOf(item)]}}">{{op1Map.get(item)}}</label>
+          </div>
+          <div class="funkyradio-primary col-md-5">
+            <input [disabled]="true" type="checkbox" [checked]="cBoxMap.get('c2_'+items[items.indexOf(item)])==true"
+              name="checkbox_{{items.indexOf(item)+1}}" id="c2_{{items[items.indexOf(item)]}}" />
+            <label for="c2_{{items[items.indexOf(item)]}}">{{op2Map.get(item)}}</label>
+          </div>
         </div>
         <div class="row">
-        <div class="funkyradio-primary col-md-5">
-          <input [disabled]="true" type="checkbox" [checked]="cBoxMap.get('c3_'+items[items.indexOf(item)])==true" name="checkbox_{{items.indexOf(item)+1}}"
-            id="c3_{{items[items.indexOf(item)]}}" />
-          <label for="c3_{{items[items.indexOf(item)]}}">{{op3Map.get(item)}}</label>
-        </div>
-        <div class="funkyradio-primary col-md-5">
-          <input [disabled]="true" type="checkbox" [checked]="cBoxMap.get('c4_'+items[items.indexOf(item)])==true" name="checkbox_{{items.indexOf(item)+1}}"
-            id="c4_{{items[items.indexOf(item)]}}" />
-          <label for="c4_{{items[items.indexOf(item)]}}">{{op4Map.get(item)}}</label>
-        </div>
+          <div class="funkyradio-primary col-md-5">
+            <input [disabled]="true" type="checkbox" [checked]="cBoxMap.get('c3_'+items[items.indexOf(item)])==true"
+              name="checkbox_{{items.indexOf(item)+1}}" id="c3_{{items[items.indexOf(item)]}}" />
+            <label for="c3_{{items[items.indexOf(item)]}}">{{op3Map.get(item)}}</label>
+          </div>
+          <div class="funkyradio-primary col-md-5">
+            <input [disabled]="true" type="checkbox" [checked]="cBoxMap.get('c4_'+items[items.indexOf(item)])==true"
+              name="checkbox_{{items.indexOf(item)+1}}" id="c4_{{items[items.indexOf(item)]}}" />
+            <label for="c4_{{items[items.indexOf(item)]}}">{{op4Map.get(item)}}</label>
+          </div>
         </div>
       </div>
 
@@ -81,30 +82,29 @@
 
       <div class="funkyradio" id="{{items.indexOf(item)+1}}">
         <div class="row">
-        <div class="funkyradio-primary col-md-6">
-          <input [disabled]="true" type="radio" [checked]="cBoxMap.get('c1_'+items[items.indexOf(item)])==true" name="radio_{{items.indexOf(item)+1}}"
-            id="c1_{{items[items.indexOf(item)]}}" />
-          <label for="c1_{{items[items.indexOf(item)]}}">{{op1Map.get(item)}}</label>
-        </div>
-        <div class="funkyradio-primary col-md-6">
-          <input [disabled]="true" type="radio" [checked]="cBoxMap.get('c2_'+items[items.indexOf(item)])==true" name="radio_{{items.indexOf(item)+1}}"
-            id="c2_{{items[items.indexOf(item)]}}" />
-          <label for="c2_{{items[items.indexOf(item)]}}">{{op2Map.get(item)}}</label>
-        </div>
+          <div class="funkyradio-primary col-md-6">
+            <input [disabled]="true" type="radio" [checked]="cBoxMap.get('c1_'+items[items.indexOf(item)])==true" name="radio_{{items.indexOf(item)+1}}"
+              id="c1_{{items[items.indexOf(item)]}}" />
+            <label for="c1_{{items[items.indexOf(item)]}}">{{op1Map.get(item)}}</label>
+          </div>
+          <div class="funkyradio-primary col-md-6">
+            <input [disabled]="true" type="radio" [checked]="cBoxMap.get('c2_'+items[items.indexOf(item)])==true" name="radio_{{items.indexOf(item)+1}}"
+              id="c2_{{items[items.indexOf(item)]}}" />
+            <label for="c2_{{items[items.indexOf(item)]}}">{{op2Map.get(item)}}</label>
+          </div>
         </div>
         <div class="row">
-        <div class="funkyradio-primary col-md-6">
-          <input [disabled]="true" type="radio" [checked]="cBoxMap.get('c3_'+items[items.indexOf(item)])==true" name="radio_{{items.indexOf(item)+1}}"
-            id="c3_{{items[items.indexOf(item)]}}" />
-          <label for="c3_{{items[items.indexOf(item)]}}">{{op3Map.get(item)}}</label>
+          <div class="funkyradio-primary col-md-6">
+            <input [disabled]="true" type="radio" [checked]="cBoxMap.get('c3_'+items[items.indexOf(item)])==true" name="radio_{{items.indexOf(item)+1}}"
+              id="c3_{{items[items.indexOf(item)]}}" />
+            <label for="c3_{{items[items.indexOf(item)]}}">{{op3Map.get(item)}}</label>
+          </div>
+          <div class="funkyradio-primary col-md-6">
+            <input [disabled]="true" type="radio" [checked]="cBoxMap.get('c4_'+items[items.indexOf(item)])==true" name="radio_{{items.indexOf(item)+1}}"
+              id="c4_{{items[items.indexOf(item)]}}" />
+            <label for="c4_{{items[items.indexOf(item)]}}">{{op4Map.get(item)}}</label>
+          </div>
         </div>
-        <div class="funkyradio-primary col-md-6">
-          <input [disabled]="true" type="radio" [checked]="cBoxMap.get('c4_'+items[items.indexOf(item)])==true" name="radio_{{items.indexOf(item)+1}}"
-            id="c4_{{items[items.indexOf(item)]}}" />
-          <label for="c4_{{items[items.indexOf(item)]}}">{{op4Map.get(item)}}</label>
-        </div>
-        </div>
-
       </div>
       <h4 style="font-family: monospace">Answer Explanation:</h4>
       <h5 style="font-family: monospace">{{explMap.get(item)}}</h5>

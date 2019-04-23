@@ -6,7 +6,8 @@ import { AuthService } from '../core/auth.service';
 @Component({
   selector: 'app-result',
   templateUrl: './result.component.html',
-  styleUrls: ['./result.component.css']
+  styleUrls: ['./result.component.css'],
+  providers: [AuthService]
 })
 export class ResultComponent implements OnInit {
 

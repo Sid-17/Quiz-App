@@ -10,7 +10,6 @@ import { AuthService } from '../core/auth.service';
   styleUrls: ['./quiz.component.css'],
   providers: [FirebaseService]
 })
-
 export class QuizComponent implements OnInit {
 
   cquiz: string;

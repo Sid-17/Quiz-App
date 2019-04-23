@@ -21,10 +21,9 @@
     <div class="panel panel-primary" style="border: 0px; margin-bottom: 5px;">
         <div class="panel-heading" style="padding-top:1px; padding-bottom:0px;">
            <h4 style="font-family: monospace">{{items.indexOf(item)+1}}. {{item.payload.doc.data().question}}</h4>
-           <div class = "pull-right">
-            <h4 style="color:brown;font-family: monospace"><b>Marks: {{item.payload.doc.data().marks}}</b></h4>  
-
-           </div>
+            <div class = "pull-right">
+                <h4 style="color:brown;font-family: monospace"><b>Marks: {{item.payload.doc.data().marks}}</b></h4>  </div>
+        </div>   
         <div class="panel-footer" style="padding-left: 20px" *ngIf="(item.payload.doc.data().multiCorrect)">
             <h5 style="font-family: monospace">More than one ans are correct</h5>
 

@@ -1,5 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { FormsModule } from '@angular/forms';
+import { FirebaseService } from '../firebase.service';
 import { AddQuizComponent } from './add-quiz.component';
 
 describe('AddQuizComponent', () => {
@@ -8,7 +9,9 @@ describe('AddQuizComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AddQuizComponent ]
+      imports: [FormsModule],
+      declarations: [ AddQuizComponent ],
+      providers: [FirebaseService]
     })
     .compileComponents();
   }));
@@ -17,9 +20,5 @@ describe('AddQuizComponent', () => {
     fixture = TestBed.createComponent(AddQuizComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
   });
 });

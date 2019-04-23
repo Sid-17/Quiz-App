@@ -1,9 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgModule } from '@angular/core';
 import { FirebaseService } from '../firebase.service';
 import { AuthService } from '../core/auth.service'
 import { Location } from '@angular/common';
 import { Router, Params, ActivatedRoute } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 import { FormGroup, FormArray, FormBuilder, FormControl, Validators } from '@angular/forms';
+
+@NgModule({
+  imports: [
+    FormsModule
+  ]
+})
 
 @Component({
   selector: 'app-add-quiz',

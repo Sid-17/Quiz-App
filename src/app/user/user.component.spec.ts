@@ -2,8 +2,8 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { UserComponent } from './user.component';
 
-describe('AddQuizComponent', () => {
-  let component: AddQuizComponent;
+describe('UserComponent', () => {
+  let component: UserComponent;
   let fixture: ComponentFixture<UserComponent>;
 
   beforeEach(async(() => {
@@ -19,7 +19,5 @@ describe('AddQuizComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+  
 });

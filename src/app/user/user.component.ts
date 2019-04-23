@@ -1,19 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../core/user.service';
-import { AuthService } from '../core/auth.service'
-import { ActivatedRoute,Router } from '@angular/router';
+import { AuthService } from '../core/auth.service';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FirebaseUserModel } from '../core/user.model';
 import { FirebaseService } from '../firebase.service';
 import { ComponentService } from '../component.service';
+
 @Component({
-  selector: 'page-user',
-  templateUrl: 'user.component.html',
-  styleUrls: ['user.component.scss'],
-  providers:[FirebaseService]
+  selector: 'app-user',
+  templateUrl: './user.component.html',
+  styleUrls: ['./user.component.css'],
+  providers: [FirebaseService]
 })
-export class UserComponent implements OnInit{
+export class UserComponent implements OnInit {
 
   user: FirebaseUserModel = new FirebaseUserModel();
   profileForm: FormGroup;
@@ -24,20 +25,18 @@ export class UserComponent implements OnInit{
     public userService: UserService,
     public authService: AuthService,
     private route: ActivatedRoute,
-    private location : Location,
+    private location: Location,
     private fb: FormBuilder,
     public firebaseService: FirebaseService,
     public componentService: ComponentService,
     private router: Router
   ) {
     this.userName = localStorage.getItem('userName');
-    this.userName = this.userName.slice(0,this.userName.indexOf("@"));
-    if(this.userName == "admin")
-    {
+    this.userName = this.userName.slice(0, this.userName.indexOf("@"));
+    if (this.userName == "admin") {
       this.router.navigate(['/add-quiz']);
     }
-    else if(this.userName == null)
-    {
+    else if (this.userName == null) {
       localStorage.removeItem('userName');
       this.router.navigate(['/login']);
     }
@@ -46,7 +45,7 @@ export class UserComponent implements OnInit{
   ngOnInit(): void {
 
     let order = localStorage.getItem('userName');
-    console.log(order+"this printeddd");
+    console.log(order + "this printeddd");
 
     this.route.data.subscribe(routeData => {
       let data = routeData['data'];
@@ -57,38 +56,39 @@ export class UserComponent implements OnInit{
     })
 
     this.firebaseService.getQuizzes()
-    .subscribe(result => {
-      this.items = result;
-      console.log(this.items.length)
-    })
+      .subscribe(result => {
+        this.items = result;
+        console.log(this.items.length)
+      })
 
   }
 
   createForm(name) {
     this.profileForm = this.fb.group({
-      name: [name, Validators.required ]
+      name: [name, Validators.required]
     });
   }
 
-  save(value){
+  save(value) {
     this.userService.updateCurrentUser(value)
-    .then(res => {
-      console.log(res);
-    }, err => console.log(err))
+      .then(res => {
+        console.log(res);
+      }, err => console.log(err))
   }
 
-startQuiz(value){
-  this.componentService.setId(value);
-  this.router.navigate(['/quiz']);
-}
-  logout(){
+  startQuiz(value) {
+    this.componentService.setId(value);
+    this.router.navigate(['/quiz']);
+  }
+  logout() {
     this.authService.doLogout()
-    .then((res) => {
-      // this.location.back();
-      this.router.navigate(['/login']);
-    }, (error) => {
-      console.log("Logout error", error);
-    });
+      .then((res) => {
+        // this.location.back();
+        this.router.navigate(['/login']);
+      }, (error) => {
+        console.log("Logout error", error);
+      });
     localStorage.removeItem('userName');
   }
+
 }
