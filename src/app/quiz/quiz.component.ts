@@ -34,9 +34,15 @@ export class QuizComponent implements OnInit {
     private router: Router,
     public authService: AuthService
   ) {
+    /*if(this.userName == null)
+    {
+      this.router.navigate(['/login']);
+    }
+    else
+    {
     this.userName = localStorage.getItem('userName');
     this.userName = this.userName.slice(0, this.userName.indexOf("@"));
-    if (this.userName == "") {
+    if (this.userName == null) {
       this.router.navigate(['/login']);
     }
     else {
@@ -52,6 +58,7 @@ export class QuizComponent implements OnInit {
         }
       }
     }
+  }*/
   }
 
 

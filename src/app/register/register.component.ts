@@ -51,4 +51,9 @@ export class RegisterComponent implements OnInit {
     })
   }
 
+  login(){
+    localStorage.clear();
+    this.router.navigate(['/login']);
+  }
+
 }

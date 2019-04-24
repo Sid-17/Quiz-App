@@ -12,7 +12,8 @@ import { AuthService } from '../core/auth.service';
 export class ResultComponent implements OnInit {
 
   tQ:number
-  userName: String
+  userName: string
+  cquiz: string
   bQ:number
   cQ:number
   wQ:number

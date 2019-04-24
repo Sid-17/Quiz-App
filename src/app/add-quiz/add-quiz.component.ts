@@ -22,7 +22,7 @@ export class AddQuizComponent implements OnInit {
 
   selectedQuiz: string;
   items: Array<any>;
-  userName: String;
+  userName: string;
   n_eArea: any;
   n_marks: any;
   n_op1: any;
@@ -44,6 +44,12 @@ export class AddQuizComponent implements OnInit {
     private route: ActivatedRoute,
     private fb: FormBuilder
   ) {
+    /*if(this.userName == null)
+    {
+      this.router.navigate(['/login']);
+    }
+    else
+    {
     this.userName = localStorage.getItem('userName');
     this.userName = this.userName.slice(0, this.userName.indexOf("@"));
     if (this.userName != "admin") {
@@ -53,6 +59,7 @@ export class AddQuizComponent implements OnInit {
       localStorage.removeItem('userName');
       this.router.navigate(['/login']);
     }
+  }*/
   }
 
   ngOnInit() {

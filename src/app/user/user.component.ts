@@ -19,7 +19,7 @@ export class UserComponent implements OnInit {
   user: FirebaseUserModel = new FirebaseUserModel();
   profileForm: FormGroup;
   items: Array<any>;
-  userName: String;
+  userName: string;
 
   constructor(
     public userService: UserService,

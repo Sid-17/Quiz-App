@@ -26,8 +26,7 @@
 
         <div class="form-group">
             <label for="title">Quiz Title:</label>
-            <input type="text" #quizTitle class="form-control" id="title" (change)="addQuizInDb($event)" [(ngModel)]="n_quizTitle"
-                required>
+            <input type="text" #quizTitle class="form-control" id="title" (change)="addQuizInDb($event)" [(ngModel)]="n_quizTitle" required>
         </div>
         <div class="form-group">
             <button type="submit" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Add new quiz"
